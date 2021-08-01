@@ -9,23 +9,27 @@
 /* Begin PBXBuildFile section */
 		574016AD26B700B300E1D721 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574016AC26B700B300E1D721 /* AppDelegate.swift */; };
 		574016AF26B700B300E1D721 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574016AE26B700B300E1D721 /* SceneDelegate.swift */; };
-		574016B126B700B300E1D721 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574016B026B700B300E1D721 /* ViewController.swift */; };
 		574016B426B700B300E1D721 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 574016B226B700B300E1D721 /* Main.storyboard */; };
 		574016B626B700B500E1D721 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 574016B526B700B500E1D721 /* Assets.xcassets */; };
 		574016B926B700B500E1D721 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 574016B726B700B500E1D721 /* LaunchScreen.storyboard */; };
 		574016C226B702D900E1D721 /* winners.json in Resources */ = {isa = PBXBuildFile; fileRef = 574016C126B702D900E1D721 /* winners.json */; };
+		574016C926B70C9B00E1D721 /* WinnersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574016C826B70C9B00E1D721 /* WinnersTableViewController.swift */; };
+		574016CB26B7103500E1D721 /* WorldCupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574016CA26B7103500E1D721 /* WorldCupViewController.swift */; };
+		574016CF26B7138800E1D721 /* WorldCup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574016CE26B7138800E1D721 /* WorldCup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		574016A926B700B300E1D721 /* Campeoes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Campeoes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		574016AC26B700B300E1D721 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		574016AE26B700B300E1D721 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		574016B026B700B300E1D721 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		574016B326B700B300E1D721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		574016B526B700B500E1D721 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		574016B826B700B500E1D721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		574016BA26B700B500E1D721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		574016C126B702D900E1D721 /* winners.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = winners.json; sourceTree = "<group>"; };
+		574016C826B70C9B00E1D721 /* WinnersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnersTableViewController.swift; sourceTree = "<group>"; };
+		574016CA26B7103500E1D721 /* WorldCupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldCupViewController.swift; sourceTree = "<group>"; };
+		574016CE26B7138800E1D721 /* WorldCup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldCup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +62,13 @@
 		574016AB26B700B300E1D721 /* Campeoes */ = {
 			isa = PBXGroup;
 			children = (
-				574016C026B702AC00E1D721 /* Files */,
 				574016AC26B700B300E1D721 /* AppDelegate.swift */,
 				574016AE26B700B300E1D721 /* SceneDelegate.swift */,
-				574016B026B700B300E1D721 /* ViewController.swift */,
-				574016B226B700B300E1D721 /* Main.storyboard */,
+				574016C526B70BA000E1D721 /* Models */,
+				574016C326B70B7400E1D721 /* Views */,
+				574016C426B70B9300E1D721 /* Controllers */,
+				574016C026B702AC00E1D721 /* Files */,
 				574016B526B700B500E1D721 /* Assets.xcassets */,
-				574016B726B700B500E1D721 /* LaunchScreen.storyboard */,
 				574016BA26B700B500E1D721 /* Info.plist */,
 			);
 			path = Campeoes;
@@ -76,6 +80,32 @@
 				574016C126B702D900E1D721 /* winners.json */,
 			);
 			path = Files;
+			sourceTree = "<group>";
+		};
+		574016C326B70B7400E1D721 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				574016B226B700B300E1D721 /* Main.storyboard */,
+				574016B726B700B500E1D721 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		574016C426B70B9300E1D721 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				574016C826B70C9B00E1D721 /* WinnersTableViewController.swift */,
+				574016CA26B7103500E1D721 /* WorldCupViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		574016C526B70BA000E1D721 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				574016CE26B7138800E1D721 /* WorldCup.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,8 +179,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				574016B126B700B300E1D721 /* ViewController.swift in Sources */,
+				574016C926B70C9B00E1D721 /* WinnersTableViewController.swift in Sources */,
 				574016AD26B700B300E1D721 /* AppDelegate.swift in Sources */,
+				574016CF26B7138800E1D721 /* WorldCup.swift in Sources */,
+				574016CB26B7103500E1D721 /* WorldCupViewController.swift in Sources */,
 				574016AF26B700B300E1D721 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
