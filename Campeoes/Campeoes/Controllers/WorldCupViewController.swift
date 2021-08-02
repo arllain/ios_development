@@ -14,6 +14,8 @@ class WorldCupViewController: UIViewController {
     @IBOutlet weak var lbScore: UILabel!
     @IBOutlet weak var lbWinner: UILabel!
     @IBOutlet weak var lbVice: UILabel!
+  
+    @IBOutlet weak var tableView: UITableView!
     
     var worldCup:  WorldCup!
 
@@ -41,4 +43,35 @@ class WorldCupViewController: UIViewController {
     }
     */
 
+}
+
+extension WorldCupViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // TODO total de secoes disponiveis
+        return worldCup.matches.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // TODO numero de linhas para a secao
+        return worldCup.matches[section].games.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // TODO desenhar a cell
+//        let match = worldCup.matches[indexPath.section]
+//        let game = match.games[indexPath.row]
+        
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GamesTableViewCell
+        //cell.prepareCell(game)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = "YYYY 4 x 1 XXXX"
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // TODO opcional: obter um nome para secao
+        let match = worldCup.matches[section]
+        return match.stage
+    }
+    
 }
