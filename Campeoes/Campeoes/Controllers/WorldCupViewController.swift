@@ -8,10 +8,13 @@
 import UIKit
 
 class WorldCupViewController: UIViewController {
+    
+    var worldCup:  WorldCup?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.title = worldCup?.winner
         // Do any additional setup after loading the view.
     }
     

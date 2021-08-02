@@ -143,6 +143,7 @@
                                     <outlet property="lbWinner" destination="tnE-35-Ndh" id="SEi-4k-eOQ"/>
                                     <outlet property="lbWinnerScore" destination="tC3-6u-bZj" id="WyG-sJ-c5x"/>
                                     <outlet property="lbYear" destination="Gzg-yT-zPi" id="cRC-9e-5lM"/>
+                                    <segue destination="2eJ-3F-4pz" kind="show" id="M3J-LY-tXa"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -167,6 +168,7 @@
                         <viewLayoutGuide key="safeArea" id="B4g-wH-dVr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="1bS-gP-pKR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIK-Oz-0rc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
