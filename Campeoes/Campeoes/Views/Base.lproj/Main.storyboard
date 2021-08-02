@@ -49,7 +49,7 @@
                                                 <constraint firstAttribute="width" constant="22" id="Wyh-lL-Nno"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="2014" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gzg-yT-zPi">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gzg-yT-zPi">
                                             <rect key="frame" x="36" y="11" width="41" height="22"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -75,7 +75,7 @@
                                                 <constraint firstAttribute="height" constant="28" id="Uvg-b6-kFV"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="Alemanha" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnE-35-Ndh">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Alemanha" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnE-35-Ndh">
                                             <rect key="frame" x="56" y="54" width="303" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.87450980389999999" green="0.4431372549" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -118,6 +118,7 @@
                                         <constraint firstItem="9jb-Jd-nhG" firstAttribute="leading" secondItem="Ytd-EZ-N0y" secondAttribute="trailing" constant="4" id="RD9-da-qkU"/>
                                         <constraint firstItem="bmE-ds-WoB" firstAttribute="leading" secondItem="Hke-40-A0x" secondAttribute="trailing" constant="10" id="SIs-ng-2x0"/>
                                         <constraint firstItem="Hke-40-A0x" firstAttribute="top" secondItem="761-Ph-8Xq" secondAttribute="bottom" constant="14" id="Uie-K5-1pt"/>
+                                        <constraint firstItem="tnE-35-Ndh" firstAttribute="baseline" secondItem="tC3-6u-bZj" secondAttribute="firstBaseline" id="VyH-MO-XDT"/>
                                         <constraint firstItem="tnE-35-Ndh" firstAttribute="leading" secondItem="761-Ph-8Xq" secondAttribute="trailing" constant="10" id="Xxz-qR-lC2"/>
                                         <constraint firstItem="tC3-6u-bZj" firstAttribute="leading" secondItem="tnE-35-Ndh" secondAttribute="trailing" constant="8" id="ZZF-Rj-tQl"/>
                                         <constraint firstItem="tC3-6u-bZj" firstAttribute="centerY" secondItem="tnE-35-Ndh" secondAttribute="centerY" id="alh-pg-pTX"/>
