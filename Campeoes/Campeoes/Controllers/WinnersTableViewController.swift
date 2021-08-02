@@ -9,6 +9,11 @@ import UIKit
 
 class WinnersTableViewController: UITableViewController {
     
+    @IBOutlet weak var ivWinner: UIImageView!
+    @IBOutlet weak var ivVice: UIImageView!
+    @IBOutlet weak var lbScore: UILabel!
+    @IBOutlet weak var lbWinner: UILabel!
+    @IBOutlet weak var lbVice: UILabel!
     var worldCups: [WorldCup] = []
 
     override func viewDidLoad() {

@@ -159,21 +159,96 @@
             </objects>
             <point key="canvasLocation" x="182.60869565217394" y="48.883928571428569"/>
         </scene>
-        <!--World Cup View Controller-->
+        <!--Title-->
         <scene sceneID="Vln-Z0-isW">
             <objects>
                 <viewController id="2eJ-3F-4pz" customClass="WorldCupViewController" customModule="Campeoes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OWe-zf-qxD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(10) 0 x 0 (11)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="WPB-bi-n2u">
+                                <rect key="frame" x="134" y="173.5" width="146" height="33.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brasil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9I2-dS-j1F">
+                                <rect key="frame" x="324" y="233" width="34" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alemanha" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvc-gi-ggf">
+                                <rect key="frame" x="43" y="233" width="60" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Alemanha" translatesAutoresizingMaskIntoConstraints="NO" id="hGB-4F-TDV">
+                                <rect key="frame" x="28" y="160" width="90" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Tgm-Sp-TSL"/>
+                                    <constraint firstAttribute="width" constant="90" id="yZf-ZT-DhR"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Brasil" translatesAutoresizingMaskIntoConstraints="NO" id="9sS-NR-FyG">
+                                <rect key="frame" x="296" y="160" width="90" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="Dsz-8P-s3X"/>
+                                    <constraint firstAttribute="height" constant="60" id="uO1-PD-Els"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDg-Yf-i7A">
+                                <rect key="frame" x="8" y="291" width="398" height="1"/>
+                                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="fwB-TF-tSC"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trajetória do Campeão" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q96-NS-kBN">
+                                <rect key="frame" x="138.5" y="267" width="137.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="B4g-wH-dVr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tvc-gi-ggf" firstAttribute="top" secondItem="hGB-4F-TDV" secondAttribute="bottom" constant="13" id="7Fq-A5-5TO"/>
+                            <constraint firstItem="hGB-4F-TDV" firstAttribute="leading" secondItem="B4g-wH-dVr" secondAttribute="leading" constant="28" id="8OE-mH-ByN"/>
+                            <constraint firstItem="Q96-NS-kBN" firstAttribute="centerX" secondItem="WPB-bi-n2u" secondAttribute="centerX" id="Bbz-WS-WK8"/>
+                            <constraint firstItem="tvc-gi-ggf" firstAttribute="centerX" secondItem="hGB-4F-TDV" secondAttribute="centerX" id="CyG-ku-KVF"/>
+                            <constraint firstItem="9I2-dS-j1F" firstAttribute="top" secondItem="9sS-NR-FyG" secondAttribute="bottom" constant="13" id="FqQ-IX-D2J"/>
+                            <constraint firstItem="NDg-Yf-i7A" firstAttribute="leading" secondItem="B4g-wH-dVr" secondAttribute="leading" constant="8" id="HDO-WR-fuo"/>
+                            <constraint firstItem="9I2-dS-j1F" firstAttribute="centerX" secondItem="9sS-NR-FyG" secondAttribute="centerX" id="HqC-zC-663"/>
+                            <constraint firstItem="B4g-wH-dVr" firstAttribute="trailing" secondItem="NDg-Yf-i7A" secondAttribute="trailing" constant="8" id="IPV-cP-0BH"/>
+                            <constraint firstItem="tvc-gi-ggf" firstAttribute="top" secondItem="hGB-4F-TDV" secondAttribute="bottom" constant="13" id="JTh-5e-V29"/>
+                            <constraint firstItem="hGB-4F-TDV" firstAttribute="top" secondItem="B4g-wH-dVr" secondAttribute="top" constant="20" id="MB1-iN-ssW"/>
+                            <constraint firstItem="9sS-NR-FyG" firstAttribute="leading" secondItem="WPB-bi-n2u" secondAttribute="trailing" constant="16" id="R38-fr-zf6"/>
+                            <constraint firstItem="9sS-NR-FyG" firstAttribute="top" secondItem="B4g-wH-dVr" secondAttribute="top" constant="20" id="Wvu-FO-MoF"/>
+                            <constraint firstItem="Q96-NS-kBN" firstAttribute="centerX" secondItem="OWe-zf-qxD" secondAttribute="centerX" id="Z2H-gR-arl"/>
+                            <constraint firstItem="B4g-wH-dVr" firstAttribute="trailing" secondItem="9sS-NR-FyG" secondAttribute="trailing" constant="28" id="hQY-fd-vef"/>
+                            <constraint firstItem="NDg-Yf-i7A" firstAttribute="top" secondItem="Q96-NS-kBN" secondAttribute="bottom" constant="8" id="ixJ-6J-QR6"/>
+                            <constraint firstItem="WPB-bi-n2u" firstAttribute="centerY" secondItem="hGB-4F-TDV" secondAttribute="centerY" id="jqE-0C-3w4"/>
+                            <constraint firstItem="WPB-bi-n2u" firstAttribute="leading" secondItem="hGB-4F-TDV" secondAttribute="trailing" constant="16" id="nMg-mH-SKJ"/>
+                            <constraint firstItem="Q96-NS-kBN" firstAttribute="top" secondItem="WPB-bi-n2u" secondAttribute="bottom" constant="60" id="qcy-9c-4hR"/>
+                            <constraint firstItem="Q96-NS-kBN" firstAttribute="centerX" secondItem="OWe-zf-qxD" secondAttribute="centerX" id="uPu-6Q-PFn"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="1bS-gP-pKR"/>
+                    <navigationItem key="navigationItem" title="Title" largeTitleDisplayMode="always" id="1bS-gP-pKR"/>
+                    <connections>
+                        <outlet property="ivVice" destination="9sS-NR-FyG" id="oHy-ZW-MAj"/>
+                        <outlet property="ivWinner" destination="hGB-4F-TDV" id="U1s-P0-2uz"/>
+                        <outlet property="lbScore" destination="WPB-bi-n2u" id="U8s-W3-fBG"/>
+                        <outlet property="lbVice" destination="9I2-dS-j1F" id="xP1-d2-xXB"/>
+                        <outlet property="lbWinner" destination="tvc-gi-ggf" id="H94-4f-C5E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIK-Oz-0rc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="48"/>
+            <point key="canvasLocation" x="963.76811594202911" y="47.544642857142854"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CAb-Iu-aSV">
@@ -200,6 +275,9 @@
         <image name="header" width="1200" height="514"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
