@@ -33,11 +33,11 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="144" id="yLl-et-ToF" customClass="WorldCupTableViewCell" customModule="Campeoes" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="144" id="yLl-et-ToF" customClass="WorldCupTableViewCell" customModule="Campeoes" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="162.5" width="414" height="144"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yLl-et-ToF" id="0XQ-xS-iU9">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="144"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="144"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="ecP-GO-pZy">
@@ -56,14 +56,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="globe" translatesAutoresizingMaskIntoConstraints="NO" id="9jb-Jd-nhG">
-                                            <rect key="frame" x="376" y="11" width="22" height="22"/>
+                                            <rect key="frame" x="358.5" y="11" width="22" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="22" id="5Mj-6b-PSJ"/>
                                                 <constraint firstAttribute="height" constant="22" id="Jel-2r-LVH"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brasil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ytd-EZ-N0y">
-                                            <rect key="frame" x="336" y="13.5" width="36" height="17"/>
+                                            <rect key="frame" x="318.5" y="13.5" width="36" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -76,13 +76,13 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="Alemanha" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnE-35-Ndh">
-                                            <rect key="frame" x="56" y="54" width="320.5" height="20"/>
+                                            <rect key="frame" x="56" y="54" width="303" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.87450980389999999" green="0.4431372549" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tC3-6u-bZj">
-                                            <rect key="frame" x="384.5" y="53.5" width="9.5" height="21"/>
+                                            <rect key="frame" x="367" y="53.5" width="9.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -95,13 +95,13 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Brasil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmE-ds-WoB">
-                                            <rect key="frame" x="56" y="95.5" width="320.5" height="21"/>
+                                            <rect key="frame" x="56" y="95.5" width="303" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8e-A8-jqq">
-                                            <rect key="frame" x="384.5" y="95.5" width="9.5" height="21"/>
+                                            <rect key="frame" x="367" y="95.5" width="9.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -152,7 +152,7 @@
                             <outlet property="delegate" destination="u9j-Hz-Efz" id="W2w-wc-jDP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Campeões das Copas" id="zZ1-2d-WI2"/>
+                    <navigationItem key="navigationItem" title="Campeões das Copas" largeTitleDisplayMode="never" id="zZ1-2d-WI2"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LQ2-xV-73p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -168,7 +168,7 @@
                         <viewLayoutGuide key="safeArea" id="B4g-wH-dVr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="1bS-gP-pKR"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="1bS-gP-pKR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIK-Oz-0rc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -178,8 +178,8 @@
         <scene sceneID="CAb-Iu-aSV">
             <objects>
                 <navigationController id="hfS-L6-t8p" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tOk-eA-aFD">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="tOk-eA-aFD">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
