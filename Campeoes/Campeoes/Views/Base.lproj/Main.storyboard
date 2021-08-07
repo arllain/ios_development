@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hfS-L6-t8p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8dq-gb-OOe">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -157,7 +157,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LQ2-xV-73p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="182.60869565217394" y="48.883928571428569"/>
+            <point key="canvasLocation" x="-751" y="90"/>
         </scene>
         <!--Title-->
         <scene sceneID="Vln-Z0-isW">
@@ -213,7 +213,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Z24-KW-oam">
-                                <rect key="frame" x="0.0" y="296" width="414" height="566"/>
+                                <rect key="frame" x="0.0" y="296" width="414" height="517"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="kx2-OB-lHp" customClass="GamesTableViewCell" customModule="Campeoes" customModuleProvider="target">
@@ -326,12 +326,47 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIK-Oz-0rc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="963.76811594202911" y="47.544642857142854"/>
+            <point key="canvasLocation" x="139" y="90"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Países-->
+        <scene sceneID="dfx-eZ-Vo8">
+            <objects>
+                <viewController id="y1C-UD-LyJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tku-Kf-VHn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="e2a-f7-E6R"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Países" image="globe" catalog="system" id="yYI-bM-gCe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4dq-LP-0ki" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1559" y="801"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="6uS-YQ-m6K">
+            <objects>
+                <tabBarController id="8dq-gb-OOe" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nkj-r5-onB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="hfS-L6-t8p" kind="relationship" relationship="viewControllers" id="6Fd-xU-MaC"/>
+                        <segue destination="y1C-UD-LyJ" kind="relationship" relationship="viewControllers" id="LDr-RB-drK"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Yb-1t-15l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2474" y="354"/>
+        </scene>
+        <!--Copas-->
         <scene sceneID="CAb-Iu-aSV">
             <objects>
                 <navigationController id="hfS-L6-t8p" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Copas" image="sportscourt.fill" catalog="system" id="Ug3-Fg-i0c"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="tOk-eA-aFD">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -342,7 +377,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dyV-oq-wDT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-708" y="48"/>
+            <point key="canvasLocation" x="-1559" y="90"/>
         </scene>
     </scenes>
     <resources>
@@ -350,7 +385,9 @@
         <image name="Brasil" width="138" height="93"/>
         <image name="calendar" width="56" height="56"/>
         <image name="globe" width="56" height="56"/>
+        <image name="globe" catalog="system" width="128" height="121"/>
         <image name="header" width="1200" height="514"/>
+        <image name="sportscourt.fill" catalog="system" width="128" height="84"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
