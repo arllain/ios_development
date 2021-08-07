@@ -328,21 +328,62 @@
             </objects>
             <point key="canvasLocation" x="139" y="90"/>
         </scene>
-        <!--Países-->
-        <scene sceneID="dfx-eZ-Vo8">
+        <!--Country Table View Controller-->
+        <scene sceneID="Z8T-DS-sdR">
             <objects>
-                <viewController id="y1C-UD-LyJ" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Tku-Kf-VHn">
+                <tableViewController id="qaF-qI-Ccw" customClass="CountryTableViewController" customModule="Campeoes" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="208-NE-fKt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="e2a-f7-E6R"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="countryCell" textLabel="9WH-kP-zdi" style="IBUITableViewCellStyleDefault" id="jLo-nJ-VTK">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jLo-nJ-VTK" id="jGA-Xv-CgU">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9WH-kP-zdi">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="cl6-Aa-LbX" kind="show" id="Mc1-P5-Y7A"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qaF-qI-Ccw" id="VNJ-Zz-0DO"/>
+                            <outlet property="delegate" destination="qaF-qI-Ccw" id="7Zd-HC-5p1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="42U-qu-13Y"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B1I-AB-ifd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-649.27536231884062" y="768.75"/>
+        </scene>
+        <!--Country Details View Controller-->
+        <scene sceneID="cul-j4-DIN">
+            <objects>
+                <viewController id="cl6-Aa-LbX" customClass="CountryDetailsViewController" customModule="Campeoes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bj3-0I-Jyq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="lxa-j6-N0Y"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Países" image="globe" catalog="system" id="yYI-bM-gCe"/>
+                    <navigationItem key="navigationItem" id="ef2-Xi-anu"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4dq-LP-0ki" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qpl-R4-Ogf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1559" y="801"/>
+            <point key="canvasLocation" x="138" y="769"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6uS-YQ-m6K">
@@ -355,7 +396,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="hfS-L6-t8p" kind="relationship" relationship="viewControllers" id="6Fd-xU-MaC"/>
-                        <segue destination="y1C-UD-LyJ" kind="relationship" relationship="viewControllers" id="LDr-RB-drK"/>
+                        <segue destination="zbD-ik-69G" kind="relationship" relationship="viewControllers" id="7wN-7b-CRv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Yb-1t-15l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -379,13 +420,32 @@
             </objects>
             <point key="canvasLocation" x="-1559" y="90"/>
         </scene>
+        <!--Países-->
+        <scene sceneID="z2a-Ll-RH3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zbD-ik-69G" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Países" image="globe" catalog="system" id="ZQt-6x-VFt"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fgA-ho-CuC">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qaF-qI-Ccw" kind="relationship" relationship="rootViewController" id="Q3h-c8-7UV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zEw-km-MRS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1559.4202898550725" y="768.75"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Alemanha" width="138" height="93"/>
         <image name="Brasil" width="138" height="93"/>
         <image name="calendar" width="56" height="56"/>
-        <image name="globe" width="56" height="56"/>
         <image name="globe" catalog="system" width="128" height="121"/>
+        <image name="globe" width="56" height="56"/>
         <image name="header" width="1200" height="514"/>
         <image name="sportscourt.fill" catalog="system" width="128" height="84"/>
         <systemColor name="systemBackgroundColor">
