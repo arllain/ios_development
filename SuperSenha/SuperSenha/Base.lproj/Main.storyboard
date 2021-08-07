@@ -28,7 +28,7 @@
                                     <constraint firstAttribute="width" constant="80" id="MlH-xs-IcY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lc6-nL-N5B">
                                 <rect key="frame" x="310" y="204.5" width="80" height="34"/>
@@ -145,6 +145,14 @@
                     <navigationItem key="navigationItem" title="Gerador de Senhas" id="ShP-9Q-ddz">
                         <barButtonItem key="backBarButtonItem" title="Gerador de Senhas" id="a1T-1z-BWl"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="swCaptitalLetters" destination="gfG-G7-7vL" id="63c-Fs-sL2"/>
+                        <outlet property="swLetters" destination="KPZ-Yf-Ys5" id="lZ4-kO-7TY"/>
+                        <outlet property="swNumbers" destination="JLy-dO-LWV" id="Yrh-t7-3gp"/>
+                        <outlet property="swSpecialCharacters" destination="PvO-Vf-8fR" id="pfh-bW-nIq"/>
+                        <outlet property="tfNumberOfCharacters" destination="Lc6-nL-N5B" id="x1n-hY-2U5"/>
+                        <outlet property="tfTotalPasswords" destination="JXV-Ev-fln" id="SxR-pq-8p0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -153,7 +161,7 @@
         <!--Lista de Senhas-->
         <scene sceneID="hq9-Nh-GaM">
             <objects>
-                <viewController id="8DD-Xz-RUB" sceneMemberID="viewController">
+                <viewController id="8DD-Xz-RUB" customClass="PasswordViewController" customModule="SuperSenha" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WIm-IY-NdB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,8 +169,8 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ou5-lo-gti">
                                 <rect key="frame" x="16" y="171" width="382" height="550"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.59607843140000005" green="0.14117647059999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ej5-3r-9AM">
@@ -174,6 +182,9 @@
                                 <state key="normal" title="Gerar Novamente">
                                     <color key="titleColor" red="0.59607843140000005" green="0.14117647059999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="generatePasswordsAgain:" destination="8DD-Xz-RUB" eventType="touchUpInside" id="SDw-Rd-gTW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJ4-ft-WQR">
                                 <rect key="frame" x="253" y="806" width="137" height="30"/>
@@ -202,15 +213,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Lista de Senhas" id="wuq-mR-DWo"/>
+                    <connections>
+                        <outlet property="tvPasswords" destination="ou5-lo-gti" id="DkG-oJ-ECK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jeq-8P-BUm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1857.9710144927537" y="68.973214285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--Security Tips View Controller-->
         <scene sceneID="jN7-hh-sA4">
             <objects>
-                <viewController id="fgn-IJ-bqG" sceneMemberID="viewController">
+                <viewController id="fgn-IJ-bqG" customClass="SecurityTipsViewController" customModule="SuperSenha" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MSp-fA-jKW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -230,11 +244,14 @@
                                 <state key="normal" title="Fechar">
                                     <color key="titleColor" red="0.59607843140000005" green="0.14117647059999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="close:" destination="fgn-IJ-bqG" eventType="touchUpInside" id="SvR-g4-tg1"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ntg-au-WiB">
                                 <rect key="frame" x="24" y="82" width="366" height="646"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <mutableString key="text">1. Escolha senhas faceis de lembrar 
+                                <string key="text">1. Escolha senhas faceis de lembrar 
 Uma senha facil de guardar na memoria evita que o usuario tenha que anota-la em papeis ou arquivos, que podem chegar as maos de pessoas erradas.
 
 2. Nao use palavras reais 
@@ -262,7 +279,7 @@ Esse procedimento evita possíveis fraudes. Ao abrir links suspeitos, o usuário
 Muitos ataques podem ser evitados ao ativar serviços básicos de proteção na internet dos antivírus.
 
 10.  Se você achar que é difícil lembrar-se de várias senhas complexas, considere a instalação de um gerenciadores de senhas 
-Há diversos programas disponíveis que armazenam os dados de maneira segura e ajudam os mais esquecidos.</mutableString>
+Há diversos programas disponíveis que armazenam os dados de maneira segura e ajudam os mais esquecidos.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
