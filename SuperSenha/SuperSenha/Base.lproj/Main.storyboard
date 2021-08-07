@@ -88,6 +88,9 @@
                                 <state key="normal" title="Gerar Senhas">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="8DD-Xz-RUB" kind="show" id="OnI-zc-Go9"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="sLH-38-Qhs">
                                 <rect key="frame" x="121" y="616" width="172.5" height="210"/>
@@ -147,6 +150,143 @@
             </objects>
             <point key="canvasLocation" x="939.13043478260875" y="68.973214285714278"/>
         </scene>
+        <!--Lista de Senhas-->
+        <scene sceneID="hq9-Nh-GaM">
+            <objects>
+                <viewController id="8DD-Xz-RUB" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WIm-IY-NdB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ou5-lo-gti">
+                                <rect key="frame" x="16" y="171" width="382" height="550"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ej5-3r-9AM">
+                                <rect key="frame" x="16" y="738" width="382" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="E4H-Lx-E3v"/>
+                                </constraints>
+                                <state key="normal" title="Gerar Novamente">
+                                    <color key="titleColor" red="0.59607843140000005" green="0.14117647059999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJ4-ft-WQR">
+                                <rect key="frame" x="253" y="806" width="137" height="30"/>
+                                <state key="normal" title="Dicas de Segurança">
+                                    <color key="titleColor" systemColor="systemOrangeColor"/>
+                                </state>
+                                <connections>
+                                    <segue destination="fgn-IJ-bqG" kind="presentation" id="hgu-Fu-WDk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hNY-ns-sHx"/>
+                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                        <constraints>
+                            <constraint firstItem="hNY-ns-sHx" firstAttribute="trailing" secondItem="Ej5-3r-9AM" secondAttribute="trailing" constant="16" id="838-Ut-tca"/>
+                            <constraint firstItem="VJ4-ft-WQR" firstAttribute="top" secondItem="Ej5-3r-9AM" secondAttribute="bottom" constant="24" id="Bx8-X9-Y1S"/>
+                            <constraint firstItem="ou5-lo-gti" firstAttribute="leading" secondItem="Ej5-3r-9AM" secondAttribute="leading" id="Gpu-ql-ZVL"/>
+                            <constraint firstItem="ou5-lo-gti" firstAttribute="top" secondItem="hNY-ns-sHx" secondAttribute="top" constant="31" id="HsX-Fg-qSV"/>
+                            <constraint firstItem="VJ4-ft-WQR" firstAttribute="top" secondItem="Ej5-3r-9AM" secondAttribute="bottom" constant="24" id="UgI-ot-1xF"/>
+                            <constraint firstItem="Ej5-3r-9AM" firstAttribute="top" secondItem="ou5-lo-gti" secondAttribute="bottom" constant="17" id="bh3-El-Ifg"/>
+                            <constraint firstItem="Ej5-3r-9AM" firstAttribute="leading" secondItem="hNY-ns-sHx" secondAttribute="leading" constant="16" id="gRk-ZV-PDw"/>
+                            <constraint firstItem="hNY-ns-sHx" firstAttribute="bottom" secondItem="VJ4-ft-WQR" secondAttribute="bottom" constant="26" id="ilb-d3-tUf"/>
+                            <constraint firstItem="hNY-ns-sHx" firstAttribute="trailing" secondItem="VJ4-ft-WQR" secondAttribute="trailing" constant="24" id="ktu-mG-MgM"/>
+                            <constraint firstItem="ou5-lo-gti" firstAttribute="trailing" secondItem="Ej5-3r-9AM" secondAttribute="trailing" id="lUR-O6-rOL"/>
+                            <constraint firstItem="VJ4-ft-WQR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hNY-ns-sHx" secondAttribute="leading" symbolic="YES" id="yir-Bc-28j"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Lista de Senhas" id="wuq-mR-DWo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jeq-8P-BUm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1857.9710144927537" y="68.973214285714278"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="jN7-hh-sA4">
+            <objects>
+                <viewController id="fgn-IJ-bqG" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MSp-fA-jKW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 dicas para ter uma senha forte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LOd-Vj-l82">
+                                <rect key="frame" x="24" y="36" width="366" height="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="textColor" red="0.59607843140000005" green="0.14117647059999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBE-FC-vEl">
+                                <rect key="frame" x="330" y="752" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7Ct-JC-bW3"/>
+                                    <constraint firstAttribute="width" constant="60" id="PHQ-DR-O6y"/>
+                                </constraints>
+                                <state key="normal" title="Fechar">
+                                    <color key="titleColor" red="0.59607843140000005" green="0.14117647059999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ntg-au-WiB">
+                                <rect key="frame" x="24" y="82" width="366" height="646"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <mutableString key="text">1. Escolha senhas faceis de lembrar 
+Uma senha facil de guardar na memoria evita que o usuario tenha que anota-la em papeis ou arquivos, que podem chegar as maos de pessoas erradas.
+
+2. Nao use palavras reais 
+Uma palavra que pode ser encontrada no dicionario pode facilitar o trabalho de hackers. Para tornar esse trabalho mais difícil, use frases ao inves de substantivos.
+
+3.  Combine maiusculas, minusculas, numeros e caracteres nao alfanumericos
+A insercao desses itens na senha complica ainda mais o trabalho de quem estiver mal intencionado.
+
+4.  Nao recicle senhas
+Por exemplo, não use "senha1 ‘, ' senha2 ‘, ' senha3 ' em contas diferentes. Ao mudar apenas um caractere, o usuário corre o risco de entregar o acesso a outros serviços ao cibercriminoso
+
+5. Não use a mesma senha para várias contas
+O mesmo se aplica nesse caso. Caso o pior aconteça, o usuário perde a segurança de todas as suas contas.
+
+6.   Não use senhas óbvias que podem ser facilmente descobertas
+Não escolha como código o nome de pessoas da família, como filho, marido ou até do animal de estimação. Ao investigar levemente a vida de alguém, esses nomes são facilmente descobertos e podem se tornar uma arma.
+
+7.  Não compartilhe sua senha
+Nunca compartilhe suas informações pessoais. Se alguma empresa pedir sua senha, mesmo que por telefone, não informe. Lembre-se, você não sabe quem está do outro lado da linha telefônica.
+
+8.  Se algum site enviar um e-mail de confirmação com uma nova senha, inicie uma nova sessão na página e altere sua senha imediatamente
+Esse procedimento evita possíveis fraudes. Ao abrir links suspeitos, o usuário pode acabar fornecendo informações pessoais sem perceber.
+
+9.     Certifique-se de que seu software de segurança da Internet bloqueie as intenções dos cibercriminosos de interceptar ou roubar senhas
+Muitos ataques podem ser evitados ao ativar serviços básicos de proteção na internet dos antivírus.
+
+10.  Se você achar que é difícil lembrar-se de várias senhas complexas, considere a instalação de um gerenciadores de senhas 
+Há diversos programas disponíveis que armazenam os dados de maneira segura e ajudam os mais esquecidos.</mutableString>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nBk-8z-geZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OBE-FC-vEl" firstAttribute="top" secondItem="ntg-au-WiB" secondAttribute="bottom" constant="24" id="04e-pT-mPJ"/>
+                            <constraint firstItem="LOd-Vj-l82" firstAttribute="leading" secondItem="nBk-8z-geZ" secondAttribute="leading" constant="24" id="0uK-c3-mo6"/>
+                            <constraint firstItem="nBk-8z-geZ" firstAttribute="trailing" secondItem="ntg-au-WiB" secondAttribute="trailing" constant="24" id="ARh-bO-VqK"/>
+                            <constraint firstItem="LOd-Vj-l82" firstAttribute="top" secondItem="nBk-8z-geZ" secondAttribute="top" constant="36" id="GU4-UE-QhQ"/>
+                            <constraint firstItem="ntg-au-WiB" firstAttribute="leading" secondItem="nBk-8z-geZ" secondAttribute="leading" constant="24" id="UQK-bN-QYh"/>
+                            <constraint firstItem="nBk-8z-geZ" firstAttribute="trailing" secondItem="LOd-Vj-l82" secondAttribute="trailing" constant="24" id="Zav-vg-rmb"/>
+                            <constraint firstItem="nBk-8z-geZ" firstAttribute="bottom" secondItem="OBE-FC-vEl" secondAttribute="bottom" constant="26" id="e1A-sL-s82"/>
+                            <constraint firstItem="ntg-au-WiB" firstAttribute="top" secondItem="LOd-Vj-l82" secondAttribute="bottom" constant="24" id="nOB-4A-Ep7"/>
+                            <constraint firstItem="nBk-8z-geZ" firstAttribute="trailing" secondItem="OBE-FC-vEl" secondAttribute="trailing" constant="24" id="uQt-E9-pno"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vox-jF-Blr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2628.985507246377" y="68.973214285714278"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Nj-BZ-2LF">
             <objects>
@@ -168,8 +308,17 @@
     </scenes>
     <resources>
         <image name="lock" width="172.5" height="210"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
