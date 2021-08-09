@@ -367,7 +367,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B1I-AB-ifd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-649.27536231884062" y="768.75"/>
+            <point key="canvasLocation" x="-725" y="769"/>
         </scene>
         <!--Country Details View Controller-->
         <scene sceneID="cul-j4-DIN">
@@ -444,8 +444,8 @@
         <image name="Alemanha" width="138" height="93"/>
         <image name="Brasil" width="138" height="93"/>
         <image name="calendar" width="56" height="56"/>
-        <image name="globe" catalog="system" width="128" height="121"/>
         <image name="globe" width="56" height="56"/>
+        <image name="globe" catalog="system" width="128" height="121"/>
         <image name="header" width="1200" height="514"/>
         <image name="sportscourt.fill" catalog="system" width="128" height="84"/>
         <systemColor name="systemBackgroundColor">

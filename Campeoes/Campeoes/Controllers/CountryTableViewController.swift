@@ -10,7 +10,6 @@ import UIKit
 class CountryTableViewController: UITableViewController {
     
     var worldCups: [WorldCup] = []
-    var worldCupsFilterd: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,33 +28,23 @@ class CountryTableViewController: UITableViewController {
         
         do {
             worldCups = try JSONDecoder().decode([WorldCup].self, from: jsonData)
-            
-            for worldCup in worldCups {
-                worldCupsFilterd.append(worldCup.winner)
-                
-            }
-            
-            worldCupsFilterd = unique(source: worldCupsFilterd)
- 
+            worldCups = removeDuplicateElements(worldCup: worldCups)
         } catch  {
             print(error.localizedDescription)
         }
     }
     
-    func unique<S : Sequence, T : Hashable>(source: S) -> [T] where S.Iterator.Element == T {
-        var buffer = [T]()
-        var added = Set<T>()
-        for elem in source {
-            if !added.contains(elem) {
-                buffer.append(elem)
-                added.insert(elem)
+    func removeDuplicateElements(worldCup: [WorldCup]) -> [WorldCup] {
+        var uniquePosts = [WorldCup]()
+        for worldCups in worldCups {
+            if !uniquePosts.contains(where: {$0.winner ==  worldCups.winner}) {
+                uniquePosts.append(worldCups)
             }
         }
-        return buffer
+        return uniquePosts
     }
-
+    
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -63,18 +52,18 @@ class CountryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return worldCupsFilterd.count
+        return worldCups.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let countryCell = tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath)
         
-        let worldCup = worldCupsFilterd[indexPath.row]
+        let worldCup = worldCups[indexPath.row]
         
         // Configure the cell...
-        countryCell.textLabel?.text = "\(worldCup)"
-        countryCell.imageView?.image = UIImage(named: worldCup)
+        countryCell.textLabel?.text = "\(worldCup.winner)"
+        countryCell.imageView?.image = UIImage(named: worldCup.winner)
     
         return countryCell
     }
