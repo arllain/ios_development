@@ -35,13 +35,13 @@ class CountryTableViewController: UITableViewController {
     }
     
     func removeDuplicateElements(worldCup: [WorldCup]) -> [WorldCup] {
-        var uniquePosts = [WorldCup]()
+        var uniqueWorldCups = [WorldCup]()
         for worldCups in worldCups {
-            if !uniquePosts.contains(where: {$0.winner ==  worldCups.winner}) {
-                uniquePosts.append(worldCups)
+            if !uniqueWorldCups.contains(where: {$0.winner ==  worldCups.winner}) {
+                uniqueWorldCups.append(worldCups)
             }
         }
-        return uniquePosts
+        return uniqueWorldCups
     }
     
     // MARK: - Table view data source
