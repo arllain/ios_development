@@ -10,14 +10,35 @@ import UIKit
 class CountryDetailsViewController: UIViewController {
     
     var worldCup:  WorldCup!
+    var worldCups: [WorldCup] = []
     var winner: String!
+    
+    
+    @IBOutlet weak var ivWinner: UIImageView!
+    @IBOutlet weak var lbConquerNumber: UILabel!
+    @IBOutlet weak var lbConquers: UILabel!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "\(worldCup.winner)"
-        // Do any additional setup after loading the view.
+        ivWinner.image = UIImage(named: worldCup.winner)
+        
+        var numConquistas = 0
+        var conquistas: String = ""
+        
+        for cup in worldCups {
+            if (cup.winner == worldCup.winner){
+                numConquistas+=1
+                conquistas = conquistas + "- \(cup.country), \(cup.year) (\(cup.winner) \(cup.winnerScore)  X  \(cup.viceScore)  \(cup.vice)) \n"
+                
+            }
+        }
+        
+        print(conquistas)
+        lbConquerNumber.text = "Copas do mundo conquistadas: " + String(numConquistas)
+        lbConquers.text = conquistas
     }
     
 

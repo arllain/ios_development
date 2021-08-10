@@ -10,6 +10,7 @@ import UIKit
 class CountryTableViewController: UITableViewController {
     
     var worldCups: [WorldCup] = []
+    var worldCupsWinners: [WorldCup] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class CountryTableViewController: UITableViewController {
         
         do {
             worldCups = try JSONDecoder().decode([WorldCup].self, from: jsonData)
-            worldCups = removeDuplicateElements(worldCup: worldCups)
+            worldCupsWinners = removeDuplicateElements(worldCup: worldCups)
         } catch  {
             print(error.localizedDescription)
         }
@@ -52,14 +53,14 @@ class CountryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return worldCups.count
+        return worldCupsWinners.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let countryCell = tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath)
         
-        let worldCup = worldCups[indexPath.row]
+        let worldCup = worldCupsWinners[indexPath.row]
         
         // Configure the cell...
         countryCell.textLabel?.text = "\(worldCup.winner)"
@@ -113,8 +114,9 @@ class CountryTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         
         let vc = segue.destination as! CountryDetailsViewController
-        let worldCup = worldCups[tableView.indexPathForSelectedRow!.row]
-        vc.worldCup = worldCup
+        let worldCupWinner = worldCupsWinners[tableView.indexPathForSelectedRow!.row]
+        vc.worldCup = worldCupWinner
+        vc.worldCups = worldCups
         
     }
 
