@@ -16,7 +16,7 @@ class CountryDetailsViewController: UIViewController {
     
     @IBOutlet weak var ivWinner: UIImageView!
     @IBOutlet weak var lbConquerNumber: UILabel!
-    @IBOutlet weak var lbConquers: UILabel!
+    @IBOutlet weak var tvConquers: UITextView!
     
 
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ class CountryDetailsViewController: UIViewController {
         
         print(conquistas)
         lbConquerNumber.text = "Copas do mundo conquistadas: " + String(numConquistas)
-        lbConquers.text = conquistas
+        tvConquers.text = conquistas
     }
     
 

@@ -402,15 +402,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="teste" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x4V-Tc-AbF">
-                                <rect key="frame" x="20" y="402" width="374" height="179"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="teste" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KQL-Ao-5DI">
+                                <rect key="frame" x="20" y="401" width="374" height="185"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="179" id="LZr-8A-Ofo"/>
+                                    <constraint firstAttribute="width" constant="374" id="gD2-2O-yex"/>
+                                    <constraint firstAttribute="height" constant="185" id="rBe-Hq-r5G"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lxa-j6-N0Y"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -418,23 +420,24 @@
                             <constraint firstItem="2Xb-Lj-xpu" firstAttribute="leading" secondItem="lxa-j6-N0Y" secondAttribute="leading" constant="20" id="08c-01-IXw"/>
                             <constraint firstItem="ZKN-d5-d1I" firstAttribute="top" secondItem="lxa-j6-N0Y" secondAttribute="top" constant="45" id="4oJ-2u-Ouq"/>
                             <constraint firstItem="lxa-j6-N0Y" firstAttribute="bottom" secondItem="ZKN-d5-d1I" secondAttribute="bottom" constant="500" id="5qz-bU-1PR"/>
-                            <constraint firstItem="x4V-Tc-AbF" firstAttribute="leading" secondItem="2Xb-Lj-xpu" secondAttribute="leading" id="Ek2-k4-EXN"/>
+                            <constraint firstItem="2Xb-Lj-xpu" firstAttribute="top" secondItem="Xgh-NP-YuO" secondAttribute="bottom" constant="8" symbolic="YES" id="AdI-kl-9rv"/>
                             <constraint firstItem="ZKN-d5-d1I" firstAttribute="leading" secondItem="lxa-j6-N0Y" secondAttribute="leading" constant="60" id="FV5-61-UW6"/>
                             <constraint firstItem="Xgh-NP-YuO" firstAttribute="top" secondItem="ZKN-d5-d1I" secondAttribute="bottom" constant="39" id="IOk-oG-Cfg"/>
+                            <constraint firstItem="lxa-j6-N0Y" firstAttribute="trailing" secondItem="KQL-Ao-5DI" secondAttribute="trailing" constant="20" id="KbP-Li-KdC"/>
                             <constraint firstItem="lxa-j6-N0Y" firstAttribute="trailing" secondItem="Xgh-NP-YuO" secondAttribute="trailing" constant="20" id="Lfa-q5-duH"/>
-                            <constraint firstItem="x4V-Tc-AbF" firstAttribute="top" secondItem="2Xb-Lj-xpu" secondAttribute="bottom" id="Rgm-BK-4XC"/>
-                            <constraint firstItem="x4V-Tc-AbF" firstAttribute="trailing" secondItem="2Xb-Lj-xpu" secondAttribute="trailing" id="VkC-yD-HRO"/>
-                            <constraint firstItem="lxa-j6-N0Y" firstAttribute="bottom" secondItem="x4V-Tc-AbF" secondAttribute="bottom" constant="232" id="jVp-EP-VtU"/>
+                            <constraint firstItem="KQL-Ao-5DI" firstAttribute="top" secondItem="Xgh-NP-YuO" secondAttribute="bottom" constant="28" id="O4b-th-SqO"/>
+                            <constraint firstItem="KQL-Ao-5DI" firstAttribute="leading" secondItem="lxa-j6-N0Y" secondAttribute="leading" constant="20" id="YT9-cF-Qci"/>
                             <constraint firstItem="lxa-j6-N0Y" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2Xb-Lj-xpu" secondAttribute="trailing" symbolic="YES" id="kql-UF-TWz"/>
                             <constraint firstItem="lxa-j6-N0Y" firstAttribute="trailing" secondItem="ZKN-d5-d1I" secondAttribute="trailing" constant="60" id="sh8-b2-P5O"/>
                             <constraint firstItem="Xgh-NP-YuO" firstAttribute="leading" secondItem="lxa-j6-N0Y" secondAttribute="leading" constant="20" id="swY-1N-A00"/>
+                            <constraint firstItem="lxa-j6-N0Y" firstAttribute="bottom" secondItem="KQL-Ao-5DI" secondAttribute="bottom" constant="227" id="x2n-o4-1Nv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ef2-Xi-anu"/>
                     <connections>
                         <outlet property="ivWinner" destination="ZKN-d5-d1I" id="Kau-x8-ga4"/>
                         <outlet property="lbConquerNumber" destination="Xgh-NP-YuO" id="zFD-NV-nZR"/>
-                        <outlet property="lbConquers" destination="x4V-Tc-AbF" id="daa-PL-8Fs"/>
+                        <outlet property="tvConquers" destination="KQL-Ao-5DI" id="Ag5-gu-FJs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qpl-R4-Ogf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -504,6 +507,9 @@
         <image name="globe" catalog="system" width="128" height="121"/>
         <image name="header" width="1200" height="514"/>
         <image name="sportscourt.fill" catalog="system" width="128" height="84"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
