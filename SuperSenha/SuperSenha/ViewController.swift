@@ -15,7 +15,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var swNumbers: UISwitch!
     @IBOutlet weak var swSpecialCharacters: UISwitch!
     @IBOutlet weak var swCaptitalLetters: UISwitch!
+    @IBOutlet weak var btPasswordGenerate: UIButton!
 
+    let myCustomRGBColor = UIColor(red: 152.0/255.0, green: 36.0/255.0, blue: 101.0/255.0, alpha: 1.0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -40,7 +43,51 @@ class ViewController: UIViewController {
         // forcar encerrar o modo de edicao // remove o foco e libera teclado
         view.endEditing(true)
     }
+    
+    @IBAction func acaoLetrasMinusculas(_ sender: UISwitch) {
+        if (!sender.isOn && !swNumbers.isOn  && !swCaptitalLetters.isOn && !swSpecialCharacters.isOn){
+           isEnableButton(isEnable: false)
+        }else{
+           isEnableButton(isEnable: true)
+        }
+    
+    }
 
-
+    @IBAction func acaoNumeros(_ sender: UISwitch) {
+        if (!sender.isOn && !swLetters.isOn  && !swCaptitalLetters.isOn && !swSpecialCharacters.isOn){
+           isEnableButton(isEnable: false)
+        }else{
+            isEnableButton(isEnable: true)
+        }
+    }
+    
+    @IBAction func acaoLetrasMaiusculas(_ sender: UISwitch) {
+        if (!sender.isOn && !swNumbers.isOn  && !swLetters.isOn && !swSpecialCharacters.isOn){
+           isEnableButton(isEnable: false)
+        }else{
+            isEnableButton(isEnable: true)
+        }
+    }
+    
+    
+    @IBAction func acaoCaracteresEpeciais(_ sender: UISwitch) {
+        if (!sender.isOn && !swNumbers.isOn  && !swCaptitalLetters.isOn && !swLetters.isOn){
+            isEnableButton(isEnable: false)
+        }else{
+            isEnableButton(isEnable: true)
+        }
+    }
+    
+    func isEnableButton(isEnable:Bool){
+        if(isEnable) {
+            btPasswordGenerate.isEnabled = true
+            btPasswordGenerate.backgroundColor = myCustomRGBColor
+            
+        }else {
+            btPasswordGenerate.isEnabled = false
+            btPasswordGenerate.backgroundColor = UIColor.lightGray
+        }
+    }
+    
 }
 
