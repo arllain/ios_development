@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var tfTotalPasswords: UITextField!
     @IBOutlet weak var tfNumberOfCharacters: UITextField!
@@ -16,12 +16,39 @@ class ViewController: UIViewController {
     @IBOutlet weak var swSpecialCharacters: UISwitch!
     @IBOutlet weak var swCaptitalLetters: UISwitch!
     @IBOutlet weak var btPasswordGenerate: UIButton!
-
+    @IBOutlet weak var lbErrorQtdSenha: UILabel!
+    @IBOutlet weak var lbErrorTotCaracter: UILabel!
+    
     let myCustomRGBColor = UIColor(red: 152.0/255.0, green: 36.0/255.0, blue: 101.0/255.0, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        lbErrorQtdSenha.text = "";
+        lbErrorTotCaracter.text = "";
+        
+        tfTotalPasswords.addTarget(self, action: #selector(checkAndDisplayErrorForQtdSenha(textfield:)), for: .editingChanged)
+        
+        tfNumberOfCharacters.addTarget(self, action: #selector(checkAndDisplayErrorForTotCaracter(textfield:)), for: .editingChanged)
+        
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let allowedCharacters = "123456789"
+        let allowedCharacterSet = CharacterSet(charactersIn: allowedCharacters)
+        let typedCharacterSet = CharacterSet(charactersIn: string)
+        
+        let resultado = allowedCharacterSet.isSuperset(of: typedCharacterSet);
+        
+        if(!resultado){
+            lbErrorQtdSenha.text = "invalid"
+        }else {
+            lbErrorQtdSenha.text = ""
+        }
+        
+        return resultado
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,6 +115,48 @@ class ViewController: UIViewController {
             btPasswordGenerate.backgroundColor = UIColor.lightGray
         }
     }
+  
     
+    @objc func checkAndDisplayErrorForQtdSenha(textfield: UITextField) {
+        
+        btPasswordGenerate.isEnabled = true
+        btPasswordGenerate.backgroundColor = myCustomRGBColor
+        
+        if(tfTotalPasswords.text?.isEmpty)! {
+            lbErrorQtdSenha.text = "";
+        } else if let number = Int(tfTotalPasswords.text!){
+            lbErrorQtdSenha.text = ""
+            if(number == 0 || number > 99){
+                lbErrorQtdSenha.text = "Valores não aceitáveis para a opção Quantidade de senhas: zero ou maior que 99"
+                btPasswordGenerate.isEnabled = false
+                btPasswordGenerate.backgroundColor = UIColor.lightGray
+            }
+        }else {
+            lbErrorQtdSenha.text = "Apenas numeros sao permitidos"
+            btPasswordGenerate.isEnabled = false
+            btPasswordGenerate.backgroundColor = UIColor.lightGray
+        }
+    }
+
+    @objc func checkAndDisplayErrorForTotCaracter(textfield: UITextField) {
+        
+        btPasswordGenerate.isEnabled = true
+        btPasswordGenerate.backgroundColor = myCustomRGBColor
+        if(tfNumberOfCharacters.text?.isEmpty)! {
+            lbErrorTotCaracter.text = "";
+        } else if let number = Int(tfNumberOfCharacters.text!){
+            
+            lbErrorTotCaracter.text = ""
+            if(number == 0 || number > 16){
+                lbErrorTotCaracter.text = "Valores não aceitáveis para a opção Total de caracteres: zero ou maior que 16"
+                btPasswordGenerate.isEnabled = false
+                btPasswordGenerate.backgroundColor = UIColor.lightGray
+            }
+        }else {
+            lbErrorTotCaracter.text = "Apenas numeros sao permitidos"
+            btPasswordGenerate.isEnabled = false
+            btPasswordGenerate.backgroundColor = UIColor.lightGray
+        }
+    }
 }
 
