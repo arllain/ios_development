@@ -119,8 +119,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @objc func checkAndDisplayErrorForQtdSenha(textfield: UITextField) {
         
-        btPasswordGenerate.isEnabled = true
-        btPasswordGenerate.backgroundColor = myCustomRGBColor
+        isEnableButton(isEnable: true)
         
         if(tfTotalPasswords.text?.isEmpty)! {
             lbErrorQtdSenha.text = "";
@@ -128,20 +127,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
             lbErrorQtdSenha.text = ""
             if(number == 0 || number > 99){
                 lbErrorQtdSenha.text = "Valores não aceitáveis para a opção Quantidade de senhas: zero ou maior que 99"
-                btPasswordGenerate.isEnabled = false
-                btPasswordGenerate.backgroundColor = UIColor.lightGray
+                isEnableButton(isEnable: false)
             }
         }else {
             lbErrorQtdSenha.text = "Apenas numeros sao permitidos"
-            btPasswordGenerate.isEnabled = false
-            btPasswordGenerate.backgroundColor = UIColor.lightGray
+            isEnableButton(isEnable: false)
         }
     }
 
     @objc func checkAndDisplayErrorForTotCaracter(textfield: UITextField) {
         
-        btPasswordGenerate.isEnabled = true
-        btPasswordGenerate.backgroundColor = myCustomRGBColor
+        isEnableButton(isEnable: true)
+        
         if(tfNumberOfCharacters.text?.isEmpty)! {
             lbErrorTotCaracter.text = "";
         } else if let number = Int(tfNumberOfCharacters.text!){
@@ -149,13 +146,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
             lbErrorTotCaracter.text = ""
             if(number == 0 || number > 16){
                 lbErrorTotCaracter.text = "Valores não aceitáveis para a opção Total de caracteres: zero ou maior que 16"
-                btPasswordGenerate.isEnabled = false
-                btPasswordGenerate.backgroundColor = UIColor.lightGray
+                isEnableButton(isEnable: false)
             }
         }else {
             lbErrorTotCaracter.text = "Apenas numeros sao permitidos"
-            btPasswordGenerate.isEnabled = false
-            btPasswordGenerate.backgroundColor = UIColor.lightGray
+            isEnableButton(isEnable: false)
         }
     }
 }
