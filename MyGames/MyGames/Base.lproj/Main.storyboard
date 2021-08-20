@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Lista de Jogos-->
         <scene sceneID="oNi-c8-cxX">
             <objects>
                 <tableViewController id="aaW-Il-OZE" sceneMemberID="viewController">
@@ -17,12 +17,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="QT5-Jz-RrJ">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="108" id="QT5-Jz-RrJ">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QT5-Jz-RrJ" id="4Xd-PC-XDL">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noCover" translatesAutoresizingMaskIntoConstraints="NO" id="kyQ-ty-gGt">
+                                            <rect key="frame" x="20" y="19" width="60" height="70"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="FT5-C3-qux"/>
+                                                <constraint firstAttribute="height" constant="73" id="LOn-zA-A0V"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plataforma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8W-Ry-aAE">
+                                            <rect key="frame" x="88" y="51" width="298" height="19.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" systemColor="systemGrayColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome Game" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bwh-Rk-W8R">
+                                            <rect key="frame" x="88" y="19" width="298" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Bwh-Rk-W8R" firstAttribute="leading" secondItem="kyQ-ty-gGt" secondAttribute="trailing" constant="8" id="1vd-Z0-aQX"/>
+                                        <constraint firstItem="Bwh-Rk-W8R" firstAttribute="top" secondItem="kyQ-ty-gGt" secondAttribute="top" id="6XT-ye-AUH"/>
+                                        <constraint firstItem="kyQ-ty-gGt" firstAttribute="top" secondItem="4Xd-PC-XDL" secondAttribute="topMargin" constant="8" id="8NY-gb-zRP"/>
+                                        <constraint firstItem="kyQ-ty-gGt" firstAttribute="leading" secondItem="4Xd-PC-XDL" secondAttribute="leadingMargin" id="9Ps-wJ-2Bu"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="kyQ-ty-gGt" secondAttribute="bottom" constant="8" id="OpP-AV-ha7"/>
+                                        <constraint firstItem="N8W-Ry-aAE" firstAttribute="leading" secondItem="kyQ-ty-gGt" secondAttribute="trailing" constant="8" id="qBC-ph-gAa"/>
+                                        <constraint firstItem="N8W-Ry-aAE" firstAttribute="top" secondItem="Bwh-Rk-W8R" secondAttribute="bottom" constant="8" id="vcw-Sd-aqT"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Bwh-Rk-W8R" secondAttribute="trailing" constant="8" id="xIq-x5-agC"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="N8W-Ry-aAE" secondAttribute="trailing" constant="8" id="yaN-vo-9se"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -31,7 +63,7 @@
                             <outlet property="delegate" destination="aaW-Il-OZE" id="vzF-wb-rp0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="FPk-xr-arq"/>
+                    <navigationItem key="navigationItem" title="Lista de Jogos" id="FPk-xr-arq"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTc-vt-i3b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -55,7 +87,7 @@
             </objects>
             <point key="canvasLocation" x="-671.01449275362324" y="-7.3660714285714279"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Lista de Plataformas-->
         <scene sceneID="oR0-dM-a0o">
             <objects>
                 <tableViewController id="WpF-co-8AF" sceneMemberID="viewController">
@@ -64,12 +96,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="343-xS-CxT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="FvF-C5-2bY" style="IBUITableViewCellStyleDefault" id="343-xS-CxT">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="343-xS-CxT" id="2HP-uk-Eet">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Playstation 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FvF-C5-2bY">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -78,7 +119,7 @@
                             <outlet property="delegate" destination="WpF-co-8AF" id="IMn-Kw-ECv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="HwB-BU-fmR"/>
+                    <navigationItem key="navigationItem" title="Lista de Plataformas" id="HwB-BU-fmR"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XnI-tD-xD9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -122,6 +163,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="noCover" width="50" height="61"/>
         <namedColor name="main">
             <color red="0.0" green="0.68235294117647061" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -130,6 +172,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
