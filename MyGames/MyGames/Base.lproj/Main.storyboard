@@ -61,7 +61,7 @@
                                     <outlet property="ivCover" destination="kyQ-ty-gGt" id="ljg-x0-3pP"/>
                                     <outlet property="lbConsole" destination="N8W-Ry-aAE" id="MGB-cQ-cZx"/>
                                     <outlet property="lbTitle" destination="Bwh-Rk-W8R" id="Yfg-ng-hNx"/>
-                                    <segue destination="HXA-q0-1tK" kind="show" id="zvV-RV-peo"/>
+                                    <segue destination="HXA-q0-1tK" kind="show" identifier="gameSegue" id="zvV-RV-peo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -73,7 +73,7 @@
                     <navigationItem key="navigationItem" title="Lista de Jogos" id="FPk-xr-arq">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="xpj-zw-yDa">
                             <connections>
-                                <segue destination="Npe-4v-UWj" kind="show" id="zqH-fM-RlL"/>
+                                <segue destination="Npe-4v-UWj" kind="show" identifier="newGameSegue" id="zqH-fM-RlL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -130,7 +130,13 @@
                             <constraint firstItem="88x-bh-snU" firstAttribute="leading" secondItem="NYy-DU-hl5" secondAttribute="leading" constant="16" id="sbM-X6-O1a"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="PLJ-uN-HkT"/>
+                    <navigationItem key="navigationItem" title="Title" id="PLJ-uN-HkT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="T1k-cC-5xm">
+                            <connections>
+                                <segue destination="Npe-4v-UWj" kind="show" id="xkn-eu-SEZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ivCover" destination="8Cv-M4-L5Y" id="eb9-zn-1TZ"/>
                         <outlet property="lbConsole" destination="DoQ-Om-asl" id="BFV-69-0u7"/>
@@ -370,6 +376,9 @@
             <point key="canvasLocation" x="-1901" y="-16"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="xkn-eu-SEZ"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="console" width="23" height="23"/>
         <image name="game" width="23" height="23"/>
