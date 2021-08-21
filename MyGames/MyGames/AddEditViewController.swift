@@ -7,7 +7,10 @@
 
 import UIKit
 
+
 class AddEditViewController: UIViewController {
+    
+    var game : Game!
     
     @IBOutlet weak var tfTitle: UITextField!
     @IBOutlet weak var tfConsole: UITextField!
@@ -15,6 +18,8 @@ class AddEditViewController: UIViewController {
     @IBOutlet weak var btAddEdit: UIButton!
     @IBOutlet weak var btCover: UIButton!
     @IBOutlet weak var ivCover: UIImageView!
+    
+    
     
     
     override func viewDidLoad() {
@@ -37,9 +42,41 @@ class AddEditViewController: UIViewController {
     
     @IBAction func AddEditCover(_ sender: UIButton) {
         // para adicionar uma imagem da biblioteca
+        
+        if game == nil {
+            game = Game(context: context)
+        }
+        game.title = tfTitle.text
+        game.releaseDate = dpReleaseDate.date
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+        // Back na navigation
+        navigationController?.popViewController(animated: true)
+        
     }
     
     @IBAction func addEditGame(_ sender: UIButton) {
         // acao salvar novo ou editar existente
+        
+        if game == nil {
+            game = Game(context: context)
+        }
+        
+        game.title = tfTitle.text
+        game.releaseDate = dpReleaseDate.date
+        
+        // Salvar no COREDATE
+        do {
+            try context.save()
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        navigationController?.popViewController(animated: true)
+        
     }
 }
