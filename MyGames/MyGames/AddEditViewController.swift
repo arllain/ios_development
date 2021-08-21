@@ -33,5 +33,13 @@ class AddEditViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    
+    @IBAction func AddEditCover(_ sender: UIButton) {
+        // para adicionar uma imagem da biblioteca
+    }
+    
+    @IBAction func addEditGame(_ sender: UIButton) {
+        // acao salvar novo ou editar existente
+    }
 }
