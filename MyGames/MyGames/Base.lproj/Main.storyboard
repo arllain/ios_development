@@ -131,6 +131,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="PLJ-uN-HkT"/>
+                    <connections>
+                        <outlet property="ivCover" destination="8Cv-M4-L5Y" id="eb9-zn-1TZ"/>
+                        <outlet property="lbConsole" destination="DoQ-Om-asl" id="BFV-69-0u7"/>
+                        <outlet property="lbReleaseDate" destination="JTy-Rg-wzQ" id="9m9-ce-byf"/>
+                        <outlet property="lbTitle" destination="88x-bh-snU" id="rVv-ix-NPa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9N-wI-TjG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
