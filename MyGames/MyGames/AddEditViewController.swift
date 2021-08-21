@@ -146,6 +146,8 @@ class AddEditViewController: UIViewController {
         } else if photos == .authorized {
             
             self.chooseImageFromLibrary(sourceType: sourceType)
+        } else if photos == .denied {
+            print("mostrar alerta pro usuario pedindo para ele setar manualmente a permissao ...")
         }
     }
     
