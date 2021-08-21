@@ -8,9 +8,12 @@
 import UIKit
 
 class ConselesTableViewController: UITableViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadConsoles()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -18,28 +21,32 @@ class ConselesTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    func loadConsoles() {
+        ConsolesManager.shared.loadConsoles(with: context)
+        tableView.reloadData()
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return ConsolesManager.shared.consoles.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let console = ConsolesManager.shared.consoles[indexPath.row]
+        cell.textLabel?.text = console.name
         return cell
+        
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -88,8 +95,38 @@ class ConselesTableViewController: UITableViewController {
     
     
     @IBAction func addConsole(_ sender: UIBarButtonItem) {
-        print("arllain")
+        showAlert(with: nil)
     }
     
-    
+    func showAlert(with console: Console?) {
+        let title = console == nil ? "Adicionar" : "Editar"
+        let alert = UIAlertController(title: title + " plataforma", message: nil, preferredStyle: .alert)
+        
+        alert.addTextField(configurationHandler: { (textField) in
+            textField.placeholder = "Nome da plataforma"
+            
+            if let name = console?.name {
+                textField.text = name
+            }
+        })
+        
+        alert.addAction(UIAlertAction(title: title, style: .default, handler: {(action) in
+            let console = console ?? Console(context: self.context)
+            console.name = alert.textFields?.first?.text
+            do {
+                try self.context.save()
+                self.loadConsoles()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        alert.view.tintColor = UIColor(named: "second")
+        
+        present(alert, animated: true, completion: nil)
+    }
+
+
+
 }
