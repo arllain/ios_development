@@ -304,6 +304,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Adicionar" id="e1V-br-47u"/>
+                    <connections>
+                        <outlet property="btAddEdit" destination="hlv-JD-NCA" id="re4-Ql-v50"/>
+                        <outlet property="btCover" destination="tR5-Xp-oji" id="ecA-6L-uc5"/>
+                        <outlet property="dpReleaseDate" destination="3I8-38-kPy" id="QEh-Sh-uPQ"/>
+                        <outlet property="ivCover" destination="nSQ-10-YaT" id="O6W-9g-m0p"/>
+                        <outlet property="tfConsole" destination="A3z-9p-JI6" id="0Uv-xo-uSX"/>
+                        <outlet property="tfTitle" destination="4Gv-cc-2hc" id="vOR-3z-59c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="715-rk-sXX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
