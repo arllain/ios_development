@@ -194,7 +194,13 @@
                             <outlet property="delegate" destination="WpF-co-8AF" id="IMn-Kw-ECv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Lista de Plataformas" id="HwB-BU-fmR"/>
+                    <navigationItem key="navigationItem" title="Lista de Plataformas" id="HwB-BU-fmR">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="MxC-eZ-wsL">
+                            <connections>
+                                <action selector="addConsole:" destination="WpF-co-8AF" id="baw-Ci-IjW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XnI-tD-xD9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
