@@ -12,7 +12,7 @@
         <!--Lista de Jogos-->
         <scene sceneID="oNi-c8-cxX">
             <objects>
-                <tableViewController id="aaW-Il-OZE" sceneMemberID="viewController">
+                <tableViewController id="aaW-Il-OZE" customClass="GamesTableViewController" customModule="MyGames" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Se1-Pb-Lqe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,7 +82,7 @@
         <!--Title-->
         <scene sceneID="An3-uI-JFw">
             <objects>
-                <viewController id="HXA-q0-1tK" sceneMemberID="viewController">
+                <viewController id="HXA-q0-1tK" customClass="GameViewController" customModule="MyGames" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dKL-zV-GfO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,7 +162,7 @@
         <!--Lista de Plataformas-->
         <scene sceneID="oR0-dM-a0o">
             <objects>
-                <tableViewController id="WpF-co-8AF" sceneMemberID="viewController">
+                <tableViewController id="WpF-co-8AF" customClass="ConselesTableViewController" customModule="MyGames" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CbM-El-U3P">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -197,10 +197,10 @@
             </objects>
             <point key="canvasLocation" x="667" y="494"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Edit View Controller-->
         <scene sceneID="1G1-8n-jcK">
             <objects>
-                <viewController id="Npe-4v-UWj" sceneMemberID="viewController">
+                <viewController id="Npe-4v-UWj" customClass="AddEditViewController" customModule="MyGames" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7JM-RS-LsT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
