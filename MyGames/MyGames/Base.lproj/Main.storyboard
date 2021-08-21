@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="108" id="QT5-Jz-RrJ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="108" id="QT5-Jz-RrJ" customClass="GameTableViewCell" customModule="MyGames" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="414" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QT5-Jz-RrJ" id="4Xd-PC-XDL">
@@ -58,6 +58,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="ivCover" destination="kyQ-ty-gGt" id="ljg-x0-3pP"/>
+                                    <outlet property="lbConsole" destination="N8W-Ry-aAE" id="MGB-cQ-cZx"/>
+                                    <outlet property="lbTitle" destination="Bwh-Rk-W8R" id="Yfg-ng-hNx"/>
                                     <segue destination="HXA-q0-1tK" kind="show" id="zvV-RV-peo"/>
                                 </connections>
                             </tableViewCell>
@@ -197,7 +200,7 @@
             </objects>
             <point key="canvasLocation" x="667" y="494"/>
         </scene>
-        <!--Add Edit View Controller-->
+        <!--Adicionar-->
         <scene sceneID="1G1-8n-jcK">
             <objects>
                 <viewController id="Npe-4v-UWj" customClass="AddEditViewController" customModule="MyGames" customModuleProvider="target" sceneMemberID="viewController">
@@ -288,7 +291,7 @@
                             <constraint firstItem="4Gv-cc-2hc" firstAttribute="leading" secondItem="Wu8-qA-5SN" secondAttribute="leading" constant="16" id="wTx-Vp-RU0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="e1V-br-47u"/>
+                    <navigationItem key="navigationItem" title="Adicionar" id="e1V-br-47u"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="715-rk-sXX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
