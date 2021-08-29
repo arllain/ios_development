@@ -97,20 +97,27 @@
                                 <color key="textColor" name="main"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plataforma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoQ-Om-asl">
-                                <rect key="frame" x="16" y="190.5" width="382" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="Plataforma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoQ-Om-asl">
+                                <rect key="frame" x="16" y="191" width="318" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data de lancamento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTy-Rg-wzQ">
-                                <rect key="frame" x="16" y="221.5" width="382" height="21"/>
+                                <rect key="frame" x="16" y="221.5" width="382" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8Cv-M4-L5Y">
-                                <rect key="frame" x="16" y="250.5" width="382" height="554.5"/>
+                                <rect key="frame" x="16" y="250" width="382" height="555"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noCoverFull" translatesAutoresizingMaskIntoConstraints="NO" id="LZc-xT-lYy">
+                                <rect key="frame" x="314" y="190.5" width="80" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="BTq-63-srl"/>
+                                    <constraint firstAttribute="height" constant="52" id="thL-EL-xaz"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NYy-DU-hl5"/>
@@ -118,16 +125,21 @@
                         <constraints>
                             <constraint firstItem="JTy-Rg-wzQ" firstAttribute="top" secondItem="DoQ-Om-asl" secondAttribute="bottom" constant="8" id="0Xz-hv-th4"/>
                             <constraint firstItem="NYy-DU-hl5" firstAttribute="trailing" secondItem="8Cv-M4-L5Y" secondAttribute="trailing" constant="16" id="12c-Sw-IOy"/>
+                            <constraint firstItem="LZc-xT-lYy" firstAttribute="top" secondItem="88x-bh-snU" secondAttribute="bottom" constant="8.5" id="24v-01-JOJ"/>
                             <constraint firstItem="DoQ-Om-asl" firstAttribute="leading" secondItem="NYy-DU-hl5" secondAttribute="leading" constant="16" id="2TD-Es-lbW"/>
+                            <constraint firstItem="8Cv-M4-L5Y" firstAttribute="top" secondItem="LZc-xT-lYy" secondAttribute="bottom" constant="7.5" id="36G-So-BWd"/>
                             <constraint firstItem="88x-bh-snU" firstAttribute="top" secondItem="NYy-DU-hl5" secondAttribute="top" constant="16" id="5j5-9K-bte"/>
+                            <constraint firstItem="NYy-DU-hl5" firstAttribute="trailing" secondItem="LZc-xT-lYy" secondAttribute="trailing" constant="20" id="61R-Gb-ede"/>
                             <constraint firstItem="NYy-DU-hl5" firstAttribute="trailing" secondItem="DoQ-Om-asl" secondAttribute="trailing" constant="16" id="O14-Qk-SPe"/>
                             <constraint firstItem="JTy-Rg-wzQ" firstAttribute="leading" secondItem="NYy-DU-hl5" secondAttribute="leading" constant="16" id="XRK-l3-dAX"/>
                             <constraint firstItem="NYy-DU-hl5" firstAttribute="trailing" secondItem="88x-bh-snU" secondAttribute="trailing" constant="16" id="YtV-WA-xnI"/>
                             <constraint firstItem="NYy-DU-hl5" firstAttribute="trailing" secondItem="JTy-Rg-wzQ" secondAttribute="trailing" constant="16" id="bdi-3K-VR2"/>
                             <constraint firstItem="NYy-DU-hl5" firstAttribute="bottom" secondItem="8Cv-M4-L5Y" secondAttribute="bottom" constant="8" id="cn3-65-3zI"/>
                             <constraint firstItem="DoQ-Om-asl" firstAttribute="top" secondItem="88x-bh-snU" secondAttribute="bottom" constant="8" id="dKc-h7-vhD"/>
+                            <constraint firstItem="LZc-xT-lYy" firstAttribute="leading" secondItem="NYy-DU-hl5" secondAttribute="leading" constant="314" id="jmi-Dw-2eS"/>
                             <constraint firstItem="8Cv-M4-L5Y" firstAttribute="top" secondItem="JTy-Rg-wzQ" secondAttribute="bottom" constant="8" id="pVm-Iu-sfU"/>
                             <constraint firstItem="8Cv-M4-L5Y" firstAttribute="leading" secondItem="NYy-DU-hl5" secondAttribute="leading" constant="16" id="qIx-fJ-2j5"/>
+                            <constraint firstItem="LZc-xT-lYy" firstAttribute="top" secondItem="DoQ-Om-asl" secondAttribute="top" id="rz6-a3-6N4"/>
                             <constraint firstItem="88x-bh-snU" firstAttribute="leading" secondItem="NYy-DU-hl5" secondAttribute="leading" constant="16" id="sbM-X6-O1a"/>
                         </constraints>
                     </view>
@@ -139,6 +151,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="ivConsoleCover" destination="LZc-xT-lYy" id="J8P-Rl-oRE"/>
                         <outlet property="ivCover" destination="8Cv-M4-L5Y" id="eb9-zn-1TZ"/>
                         <outlet property="lbConsole" destination="DoQ-Om-asl" id="BFV-69-0u7"/>
                         <outlet property="lbReleaseDate" destination="JTy-Rg-wzQ" id="9m9-ce-byf"/>
@@ -544,13 +557,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zqH-fM-RlL"/>
+        <segue reference="xkn-eu-SEZ"/>
         <segue reference="hLt-dg-0le"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="console" width="23" height="23"/>
         <image name="game" width="23" height="23"/>
         <image name="noCover" width="50" height="61"/>
+        <image name="noCoverFull" width="300" height="366"/>
         <namedColor name="main">
             <color red="0.0" green="0.68235294117647061" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
