@@ -97,14 +97,17 @@
                                 <color key="textColor" name="main"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="Plataforma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoQ-Om-asl">
-                                <rect key="frame" x="16" y="191" width="318" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Plataforma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoQ-Om-asl">
+                                <rect key="frame" x="16" y="191" width="382" height="22.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data de lancamento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTy-Rg-wzQ">
                                 <rect key="frame" x="16" y="221.5" width="382" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20.5" id="2y6-Hf-3Rc"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -125,21 +128,20 @@
                         <constraints>
                             <constraint firstItem="JTy-Rg-wzQ" firstAttribute="top" secondItem="DoQ-Om-asl" secondAttribute="bottom" constant="8" id="0Xz-hv-th4"/>
                             <constraint firstItem="NYy-DU-hl5" firstAttribute="trailing" secondItem="8Cv-M4-L5Y" secondAttribute="trailing" constant="16" id="12c-Sw-IOy"/>
-                            <constraint firstItem="LZc-xT-lYy" firstAttribute="top" secondItem="88x-bh-snU" secondAttribute="bottom" constant="8.5" id="24v-01-JOJ"/>
                             <constraint firstItem="DoQ-Om-asl" firstAttribute="leading" secondItem="NYy-DU-hl5" secondAttribute="leading" constant="16" id="2TD-Es-lbW"/>
                             <constraint firstItem="8Cv-M4-L5Y" firstAttribute="top" secondItem="LZc-xT-lYy" secondAttribute="bottom" constant="7.5" id="36G-So-BWd"/>
                             <constraint firstItem="88x-bh-snU" firstAttribute="top" secondItem="NYy-DU-hl5" secondAttribute="top" constant="16" id="5j5-9K-bte"/>
                             <constraint firstItem="NYy-DU-hl5" firstAttribute="trailing" secondItem="LZc-xT-lYy" secondAttribute="trailing" constant="20" id="61R-Gb-ede"/>
+                            <constraint firstItem="DoQ-Om-asl" firstAttribute="top" secondItem="88x-bh-snU" secondAttribute="bottom" constant="8.5" id="6nG-DI-FMj"/>
                             <constraint firstItem="NYy-DU-hl5" firstAttribute="trailing" secondItem="DoQ-Om-asl" secondAttribute="trailing" constant="16" id="O14-Qk-SPe"/>
+                            <constraint firstItem="LZc-xT-lYy" firstAttribute="top" secondItem="88x-bh-snU" secondAttribute="bottom" constant="8" symbolic="YES" id="OhV-XU-WxD"/>
                             <constraint firstItem="JTy-Rg-wzQ" firstAttribute="leading" secondItem="NYy-DU-hl5" secondAttribute="leading" constant="16" id="XRK-l3-dAX"/>
                             <constraint firstItem="NYy-DU-hl5" firstAttribute="trailing" secondItem="88x-bh-snU" secondAttribute="trailing" constant="16" id="YtV-WA-xnI"/>
                             <constraint firstItem="NYy-DU-hl5" firstAttribute="trailing" secondItem="JTy-Rg-wzQ" secondAttribute="trailing" constant="16" id="bdi-3K-VR2"/>
                             <constraint firstItem="NYy-DU-hl5" firstAttribute="bottom" secondItem="8Cv-M4-L5Y" secondAttribute="bottom" constant="8" id="cn3-65-3zI"/>
-                            <constraint firstItem="DoQ-Om-asl" firstAttribute="top" secondItem="88x-bh-snU" secondAttribute="bottom" constant="8" id="dKc-h7-vhD"/>
                             <constraint firstItem="LZc-xT-lYy" firstAttribute="leading" secondItem="NYy-DU-hl5" secondAttribute="leading" constant="314" id="jmi-Dw-2eS"/>
                             <constraint firstItem="8Cv-M4-L5Y" firstAttribute="top" secondItem="JTy-Rg-wzQ" secondAttribute="bottom" constant="8" id="pVm-Iu-sfU"/>
                             <constraint firstItem="8Cv-M4-L5Y" firstAttribute="leading" secondItem="NYy-DU-hl5" secondAttribute="leading" constant="16" id="qIx-fJ-2j5"/>
-                            <constraint firstItem="LZc-xT-lYy" firstAttribute="top" secondItem="DoQ-Om-asl" secondAttribute="top" id="rz6-a3-6N4"/>
                             <constraint firstItem="88x-bh-snU" firstAttribute="leading" secondItem="NYy-DU-hl5" secondAttribute="leading" constant="16" id="sbM-X6-O1a"/>
                         </constraints>
                     </view>
