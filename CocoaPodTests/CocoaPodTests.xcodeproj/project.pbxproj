@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		345E90F5DCBFDD3834EF1797 /* Pods_CocoaPodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1F6A3384FC0B0E81E2C1D72 /* Pods_CocoaPodTests.framework */; };
+		571F1F9A26E3EA2F002386AE /* Tela1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571F1F9926E3EA2F002386AE /* Tela1ViewController.swift */; };
 		EDDCA4F420A5ABBE0078C508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCA4F320A5ABBE0078C508 /* AppDelegate.swift */; };
 		EDDCA4F620A5ABBE0078C508 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDDCA4F520A5ABBE0078C508 /* ViewController.swift */; };
 		EDDCA4F920A5ABBE0078C508 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDDCA4F720A5ABBE0078C508 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		571F1F9926E3EA2F002386AE /* Tela1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tela1ViewController.swift; sourceTree = "<group>"; };
 		73A16BB8CC984CB10A8F3DE6 /* Pods-CocoaPodTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaPodTests.release.xcconfig"; path = "Target Support Files/Pods-CocoaPodTests/Pods-CocoaPodTests.release.xcconfig"; sourceTree = "<group>"; };
 		9EF78F9C6B5EEAEE95646F10 /* Pods-CocoaPodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CocoaPodTests.debug.xcconfig"; path = "Target Support Files/Pods-CocoaPodTests/Pods-CocoaPodTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A1F6A3384FC0B0E81E2C1D72 /* Pods_CocoaPodTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CocoaPodTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,7 +56,6 @@
 				9EF78F9C6B5EEAEE95646F10 /* Pods-CocoaPodTests.debug.xcconfig */,
 				73A16BB8CC984CB10A8F3DE6 /* Pods-CocoaPodTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -101,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				EDDCA4F520A5ABBE0078C508 /* ViewController.swift */,
+				571F1F9926E3EA2F002386AE /* Tela1ViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -222,6 +224,7 @@
 			files = (
 				EDDCA4F620A5ABBE0078C508 /* ViewController.swift in Sources */,
 				EDDCA4F420A5ABBE0078C508 /* AppDelegate.swift in Sources */,
+				571F1F9A26E3EA2F002386AE /* Tela1ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

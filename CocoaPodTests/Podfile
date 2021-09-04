@@ -7,4 +7,6 @@ target 'CocoaPodTests' do
 
   # Pods for CocoaPodTests
   pod 'SideMenu'
+  pod 'Alamofire'
+ 
 end
