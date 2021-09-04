@@ -20,6 +20,16 @@ class AddEditViewController: UIViewController {
     
     // MARK: - Properties
     var car: Car!
+    var brands: [Brand] = []
+    
+    lazy var pickerView: UIPickerView = {
+        let picker = UIPickerView()
+        picker.backgroundColor = .white
+        picker.delegate = self
+        picker.dataSource = self
+        
+        return picker
+    } ()
 
     // MARK: - Super Methods
     override func viewDidLoad() {
@@ -32,8 +42,59 @@ class AddEditViewController: UIViewController {
             scGasType.selectedSegmentIndex = car.gasType
             btAddEdit.setTitle("Alterar carro", for: .normal)
         }
+        
+        // 1 criamos uma toolbar e adicionamos como input do textview
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 44))
+        toolbar.tintColor = UIColor(named: "main")
+        let btCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancel))
+        let btDone = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        let btSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.items = [btCancel, btSpace, btDone]
+        
+        tfBrand.inputAccessoryView = toolbar
+        tfBrand.inputView = pickerView
+        
+        loadBrands()
     }
     
+    func loadBrands() {
+        
+        REST.loadBrands { (brands) in
+            guard let brands = brands else {return}
+            
+            // ascending order
+            self.brands = brands.sorted(by: {$0.nome < $1.nome})
+            
+            DispatchQueue.main.async {
+                self.pickerView.reloadAllComponents()
+            }
+            
+        }
+    }
+
+    func startLoadingAnimation() {
+        self.btAddEdit.isEnabled = false
+        self.btAddEdit.backgroundColor = .gray
+        self.btAddEdit.alpha = 0.5
+        self.loading.startAnimating()
+    }
+    
+    func stopLoadingAnimation() {
+        self.btAddEdit.isEnabled = true
+        self.btAddEdit.backgroundColor = UIColor(named: "main")
+        self.btAddEdit.alpha = 0
+        self.loading.stopAnimating()
+    }
+    
+    @objc func cancel() {
+        tfBrand.resignFirstResponder()
+    }
+    
+    @objc func done() {
+        tfBrand.text = brands[pickerView.selectedRow(inComponent: 0)].nome
+        cancel()
+    }
+
     // MARK: - IBActions
     @IBAction func addEdit(_ sender: UIButton) {
         
@@ -47,6 +108,7 @@ class AddEditViewController: UIViewController {
         if tfPrice.text!.isEmpty {
             tfPrice.text = "0"
         }
+        
         car.price = Double(tfPrice.text!)!
         car.gasType = scGasType.selectedSegmentIndex
         
@@ -79,4 +141,27 @@ class AddEditViewController: UIViewController {
         
     }
 
+}
+
+extension AddEditViewController:UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    // MARK: - UIPickerViewDelegate
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        let brand = brands[row]
+        return brand.nome
+        
+    }
+    
+    
+    // MARK: - UIPickerViewDataSource
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return brands.count
+    }
 }

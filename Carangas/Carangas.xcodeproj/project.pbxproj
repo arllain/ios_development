@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		571F1F9826E3A79F002386AE /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571F1F9726E3A79F002386AE /* Brand.swift */; };
 		57316BFB26E2DD8100E2B2C9 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57316BFA26E2DD8100E2B2C9 /* Car.swift */; };
 		57316C0026E2DEAD00E2B2C9 /* REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57316BFF26E2DEAD00E2B2C9 /* REST.swift */; };
 		A1B18D051F9C1BDD00313110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B18D041F9C1BDD00313110 /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		571F1F9726E3A79F002386AE /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		57316BFA26E2DD8100E2B2C9 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		57316BFF26E2DEAD00E2B2C9 /* REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST.swift; sourceTree = "<group>"; };
 		A1B18D011F9C1BDD00313110 /* Carangas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Carangas.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				57316BFA26E2DD8100E2B2C9 /* Car.swift */,
+				571F1F9726E3A79F002386AE /* Brand.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				57316C0026E2DEAD00E2B2C9 /* REST.swift in Sources */,
 				A1B18D051F9C1BDD00313110 /* AppDelegate.swift in Sources */,
 				57316BFB26E2DD8100E2B2C9 /* Car.swift in Sources */,
+				571F1F9826E3A79F002386AE /* Brand.swift in Sources */,
 				A1B18D191F9C1DBA00313110 /* AddEditViewController.swift in Sources */,
 				A1B18D1B1F9C1DCF00313110 /* CarViewController.swift in Sources */,
 			);

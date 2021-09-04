@@ -26,6 +26,7 @@ enum RESTOperation {
 class REST {
     
     private static let basePath = "https://carangas.herokuapp.com/cars"
+    private static let urlFipe = "https://parallelum.com.br/fipe/api/v1/carros/marcas"
     
     // session criada automaticamente e disponivel para reusar
     private static let session = URLSession(configuration: configuration) // URLSession.shared
@@ -151,5 +152,42 @@ class REST {
         dataTask.resume()
     }
 
+    // o metodo pode retornar um array de nil se tiver algum erro
+    static func loadBrands(onComplete: @escaping ([Brand]?) -> Void) {
+        
+        guard let url = URL(string: urlFipe) else {
+            onComplete(nil)
+            return
+        }
+        // tarefa criada, mas nao processada
+        let dataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
+            if error == nil {
+                guard let response = response as? HTTPURLResponse else {
+                    onComplete(nil)
+                    return
+                }
+                if response.statusCode == 200 {
+                    // obter o valor de data
+                    guard let data = data else {
+                        onComplete(nil)
+                        return
+                    }
+                    do {
+                        let brands = try JSONDecoder().decode([Brand].self, from: data)
+                        onComplete(brands)
+                    } catch {
+                        // algum erro ocorreu com os dados
+                        onComplete(nil)
+                    }
+                } else {
+                    onComplete(nil)
+                }
+            } else {
+                onComplete(nil)
+            }
+        }
+        // start request
+        dataTask.resume()
+    }
     
 }
