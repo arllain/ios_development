@@ -8,6 +8,15 @@
 
 import Foundation
 
+enum CarError {
+    case url
+    case taskError(error: Error)
+    case noResponse
+    case noData
+    case responseStatusCode(code: Int)
+    case invalidJSON
+}
+
 class REST {
     
     private static let basePath = "https://carangas.herokuapp.com/cars"
@@ -25,9 +34,12 @@ class REST {
         return config
     }()
     
-    class func loadCars() {
+    class func loadCars(onComplete: @escaping ([Car]) -> Void, onError: @escaping (CarError) -> Void) {
         
-        guard let url = URL(string: basePath) else {return}
+        guard let url = URL(string: basePath) else {
+            onError(.url)
+            return
+        }
         
         // tarefa criada, mas nao processada
         let dataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
@@ -35,32 +47,34 @@ class REST {
             // 1
             if error == nil {
                 // 2
-                guard let response = response as? HTTPURLResponse else {return}
+                guard let response = response as? HTTPURLResponse else {
+                    onError(.noResponse)
+                    return
+                }
+                
                 if response.statusCode == 200 {
                     
                     // servidor respondeu com sucesso :)
                     // 3
                     // obter o valor de data
-                    guard let data = data else {return}
+                    guard let data = data else {
+                        onError(.noData)
+                        return
+                    }
                     
                     do {
                         let cars = try JSONDecoder().decode([Car].self, from: data)
-                        // pronto para reter dados
-                        
-                        for car in cars {
-                            print("\(car.name) - \(car.brand)")
-                        }
-                        
+                        onComplete(cars)
                     } catch {
                         // algum erro ocorreu com os dados
-                        print(error.localizedDescription)
+                        onError(.invalidJSON)
                     }
                     
                 } else {
-                    print("Algum status inválido(-> \(response.statusCode) <-) pelo servidor!! ")
+                    onError(.responseStatusCode(code: response.statusCode))
                 }
             } else {
-                print(error.debugDescription)
+                onError(.taskError(error: error!))
             }
         }
         // start request

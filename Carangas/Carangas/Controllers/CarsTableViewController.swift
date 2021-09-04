@@ -9,9 +9,43 @@
 import UIKit
 
 class CarsTableViewController: UITableViewController {
-
+    
+    var cars: [Car] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        REST.loadCars { cars in
+            self.cars = cars
+            
+            // precisa recarregar a tableview usando a main UI thread
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
+        } onError: { error in
+            var response: String = ""
+            
+            switch error {
+            case .invalidJSON:
+                response = "invalidJSON"
+            case .noData:
+                response = "noData"
+            case .noResponse:
+                response = "noResponse"
+            case .url:
+                response = "JSON inválido"
+            case .taskError(let error):
+                response = "\(error.localizedDescription)"
+            case .responseStatusCode(let code):
+                if code != 200 {
+                    response = "Algum problema com o servidor. :( \nError:\(code)"
+                }
+            }
+            
+            print(response)
+        }
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -19,35 +53,43 @@ class CarsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        REST.loadCars()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//
+//
+//    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return cars.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         // Configure the cell...
-
+        let car = cars[indexPath.row]
+        cell.textLabel?.text = car.name
+        cell.detailTextLabel?.text = car.brand
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
