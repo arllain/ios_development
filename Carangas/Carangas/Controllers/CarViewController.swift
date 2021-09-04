@@ -37,7 +37,10 @@ class CarViewController: UIViewController {
         // Configurando um requisição simples e exibindo na WebKit
         let name = (car.name + "+" + car.brand).replacingOccurrences(of: " ", with: "+")
         let urlString = "https://www.google.com.br/search?q=\(name)&tbm=isch"
-        let url = URL(string: urlString)!
+        
+        // corrige bug quando temos acentos no conteudo da URL
+        let escapedString = urlString.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)
+        let url = URL(string: escapedString!)!
         let request = URLRequest(url: url)
         
         // permite usar usar gestos para navegar
