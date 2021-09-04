@@ -30,6 +30,12 @@ class AddEditViewController: UIViewController {
         
         return picker
     } ()
+    
+    enum CarOperationAction {
+        case add_car
+        case edit_car
+        case get_brands
+    }
 
     // MARK: - Super Methods
     override func viewDidLoad() {
@@ -86,6 +92,43 @@ class AddEditViewController: UIViewController {
         self.loading.stopAnimating()
     }
     
+    func showAlert(withTitle titleMessage: String, withMessage message: String, isTryAgain hasRetry: Bool, operation oper: CarOperationAction) {
+        
+        if oper != .get_brands {
+            DispatchQueue.main.async {
+                // ?
+            }
+            
+        }
+        
+        let alert = UIAlertController(title: titleMessage, message: message, preferredStyle: .actionSheet)
+        
+        if hasRetry {
+            let tryAgainAction = UIAlertAction(title: "Tentar novamente", style: .default, handler: {(action: UIAlertAction) in
+                
+                switch oper {
+                case .add_car:
+                    self.salvar()
+                case .edit_car:
+                    self.editar()
+                case .get_brands:
+                    self.loadBrands()
+                }
+                
+            })
+            alert.addAction(tryAgainAction)
+            
+            let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: {(action: UIAlertAction) in
+                self.goBack()
+            })
+            alert.addAction(cancelAction)
+        }
+        
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
     @objc func cancel() {
         tfBrand.resignFirstResponder()
     }
@@ -96,6 +139,33 @@ class AddEditViewController: UIViewController {
     }
 
     // MARK: - IBActions
+    fileprivate func salvar() {
+        // new car
+        REST.save(car: car) { (success) in
+            if success {
+                self.goBack()
+            }else {
+                DispatchQueue.main.async {
+                    self.showAlert(withTitle: "Adicionar", withMessage: "Nao foi possivel salvar o carro", isTryAgain: true, operation: .add_car)
+                }
+
+            }
+        }
+    }
+    
+    fileprivate func editar() {
+        // 2 - edit current car
+        REST.update(car: car) { (success) in
+            if success {
+                self.goBack()
+            }else {
+               DispatchQueue.main.async {
+                self.showAlert(withTitle: "Editar", withMessage: "Nao foi possivel editar o carro", isTryAgain: true, operation: .edit_car)
+                }
+            }
+        }
+    }
+    
     @IBAction func addEdit(_ sender: UIButton) {
         
         if car == nil {
@@ -113,24 +183,9 @@ class AddEditViewController: UIViewController {
         car.gasType = scGasType.selectedSegmentIndex
         
         if car._id == nil {
-            // new car
-            REST.save(car: car) { (success) in
-                if success {
-                    self.goBack()
-                }else {
-                    print("Nao foi possivel salvar o carro")
-                }
-                
-            }
+            salvar()
         } else {
-            // 2 - edit current car
-            REST.update(car: car) { (success) in
-                if success {
-                    self.goBack()
-                }else {
-                    print("Nao foi possivel editar o carro")
-                }
-            }
+            editar()
         }
     }
     
