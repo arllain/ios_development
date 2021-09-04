@@ -123,4 +123,50 @@ class REST {
         dataTask.resume()
     }
     
+    
+    static func update(car: Car, onComplete: @escaping (Bool) -> Void ) {
+        
+        // 1 -- bloco novo: o endpoint do servidor para UPDATE é: URL/id
+        let urlString = basePath + "/" + car._id!
+        
+        // 2 -- usar a urlString ao invés da basePath
+        guard let url = URL(string: urlString) else {
+            onComplete(false)
+            return
+        }
+        
+        // 3 -- o verbo do httpMethod deve ser alterado para PUT ao invés de POST
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        
+        // 4
+        // transformar objeto para um JSON, processo contrario do decoder -> Encoder
+        guard let jsonData = try? JSONEncoder().encode(car) else {
+            onComplete(false)
+            return
+        }
+        
+        request.httpBody = jsonData
+        
+        // 4 requisição propriamente dita como uma CLOSURE
+        let dataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            // 5 verifica resposta do servidor e retorna SUCESSO
+            if error == nil {
+                
+                // verificar e desembrulhar em uma unica vez
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200, let _ = data else {
+                    onComplete(false)
+                    return
+                }
+                
+                // sucesso
+                onComplete(true)
+                
+            } else {
+                onComplete(false)
+            }
+        }
+        dataTask.resume()
+    }
+    
 }

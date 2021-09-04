@@ -24,6 +24,14 @@ class AddEditViewController: UIViewController {
     // MARK: - Super Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if car != nil {
+            tfBrand.text = car.brand
+            tfName.text = car.name
+            tfPrice.text = "\(car.price)"
+            scGasType.selectedSegmentIndex = car.gasType
+            btAddEdit.setTitle("Alterar carro", for: .normal)
+        }
     }
     
     // MARK: - IBActions
@@ -42,14 +50,25 @@ class AddEditViewController: UIViewController {
         car.price = Double(tfPrice.text!)!
         car.gasType = scGasType.selectedSegmentIndex
         
-        // 1 - chamar a função Save da classe REST
-        REST.save(car: car) { (success) in
-            if success {
-                self.goBack()
-            }else {
-                print("Nao foi possivel salvar o carro")
+        if car._id == nil {
+            // new car
+            REST.save(car: car) { (success) in
+                if success {
+                    self.goBack()
+                }else {
+                    print("Nao foi possivel salvar o carro")
+                }
+                
             }
-        
+        } else {
+            // 2 - edit current car
+            REST.update(car: car) { (success) in
+                if success {
+                    self.goBack()
+                }else {
+                    print("Nao foi possivel editar o carro")
+                }
+            }
         }
     }
     
