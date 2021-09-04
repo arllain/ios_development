@@ -65,6 +65,8 @@ class AddEditViewController: UIViewController {
     
     func loadBrands() {
         
+        startLoadingAnimation()
+        
         REST.loadBrands { (brands) in
             guard let brands = brands else {return}
             
@@ -72,6 +74,7 @@ class AddEditViewController: UIViewController {
             self.brands = brands.sorted(by: {$0.nome < $1.nome})
             
             DispatchQueue.main.async {
+                self.stopLoadingAnimation()
                 self.pickerView.reloadAllComponents()
             }
             
@@ -88,7 +91,7 @@ class AddEditViewController: UIViewController {
     func stopLoadingAnimation() {
         self.btAddEdit.isEnabled = true
         self.btAddEdit.backgroundColor = UIColor(named: "main")
-        self.btAddEdit.alpha = 0
+        self.btAddEdit.alpha = 1
         self.loading.stopAnimating()
     }
     
@@ -96,7 +99,7 @@ class AddEditViewController: UIViewController {
         
         if oper != .get_brands {
             DispatchQueue.main.async {
-                // ?
+                self.stopLoadingAnimation()
             }
             
         }
@@ -108,7 +111,7 @@ class AddEditViewController: UIViewController {
                 
                 switch oper {
                 case .add_car:
-                    self.salvar()
+                    self.adicionar()
                 case .edit_car:
                     self.editar()
                 case .get_brands:
@@ -139,7 +142,10 @@ class AddEditViewController: UIViewController {
     }
 
     // MARK: - IBActions
-    fileprivate func salvar() {
+    fileprivate func adicionar() {
+        
+        startLoadingAnimation()
+        
         // new car
         REST.save(car: car) { (success) in
             if success {
@@ -154,13 +160,15 @@ class AddEditViewController: UIViewController {
     }
     
     fileprivate func editar() {
+        
+        startLoadingAnimation()
         // 2 - edit current car
         REST.update(car: car) { (success) in
             if success {
                 self.goBack()
             }else {
                DispatchQueue.main.async {
-                self.showAlert(withTitle: "Editar", withMessage: "Nao foi possivel editar o carro", isTryAgain: true, operation: .edit_car)
+                    self.showAlert(withTitle: "Editar", withMessage: "Nao foi possivel editar o carro", isTryAgain: true, operation: .edit_car)
                 }
             }
         }
@@ -183,7 +191,7 @@ class AddEditViewController: UIViewController {
         car.gasType = scGasType.selectedSegmentIndex
         
         if car._id == nil {
-            salvar()
+            adicionar()
         } else {
             editar()
         }
