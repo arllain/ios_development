@@ -23,6 +23,10 @@ class CarsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         label.text = "Carregando carros ..."
+        
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(self, action: #selector(loadCars), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,13 +40,15 @@ class CarsTableViewController: UITableViewController {
         loadCars()
     }
     
-    fileprivate func loadCars() {
+    // usamos o @objc para o #selector ser reconhecido
+    @objc func loadCars() {
         REST.loadCars { cars in
             self.cars = cars
             
             // precisa recarregar a tableview usando a main UI thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
             }
             
         } onError: { error in
