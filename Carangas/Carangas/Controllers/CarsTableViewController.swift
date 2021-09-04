@@ -12,16 +12,17 @@ class CarsTableViewController: UITableViewController {
     
     var cars: [Car] = []
     
+    var label: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.textColor = UIColor(named: "main")
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        
+        label.text = "Carregando carros ..."
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +32,11 @@ class CarsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
+        loadCars()
+    }
+    
+    fileprivate func loadCars() {
         REST.loadCars { cars in
             self.cars = cars
             
@@ -61,9 +66,15 @@ class CarsTableViewController: UITableViewController {
             }
             
             print(response)
+            
+            DispatchQueue.main.async {
+                self.label.text = "Ocorreu um erro no servidor\n\n\(response)"
+                self.tableView.backgroundView = self.label
+            }
         }
-
     }
+    
+
 
     // MARK: - Table view data source
 
@@ -73,7 +84,17 @@ class CarsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
+        let count = cars.count
+        
+        if count == 0 {
+            // mostrar mensagem padrao
+            self.label.text = "Sem dados"
+            self.tableView.backgroundView = self.label
+        } else {
+            self.tableView.backgroundView = nil
+        }
+        
         return cars.count
     }
 
