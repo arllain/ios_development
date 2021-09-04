@@ -190,10 +190,10 @@
             </objects>
             <point key="canvasLocation" x="3805" y="851"/>
         </scene>
-        <!--View Controller-->
+        <!--Tela1 View Controller-->
         <scene sceneID="huR-Np-pKP">
             <objects>
-                <viewController id="K1V-7e-Czv" sceneMemberID="viewController">
+                <viewController id="K1V-7e-Czv" customClass="Tela1ViewController" customModule="CocoaPodTests" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mx3-5q-Skn">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="872"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
