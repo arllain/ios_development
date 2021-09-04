@@ -34,7 +34,7 @@ class REST {
         return config
     }()
     
-    class func loadCars(onComplete: @escaping ([Car]) -> Void, onError: @escaping (CarError) -> Void) {
+    static func loadCars(onComplete: @escaping ([Car]) -> Void, onError: @escaping (CarError) -> Void) {
         
         guard let url = URL(string: basePath) else {
             onError(.url)
@@ -80,4 +80,47 @@ class REST {
         // start request
         dataTask.resume()
         
-    }}
+    }
+
+    
+    static func save(car: Car, onComplete: @escaping (Bool) -> Void ) {
+        // 1
+        guard let url = URL(string: basePath) else {
+            onComplete(false)
+            return
+        }
+        
+        // 2
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        // 3
+        // transformar objeto para um JSON, processo contrario do decoder -> Encoder
+        guard let jsonData = try? JSONEncoder().encode(car) else {
+            onComplete(false)
+            return
+        }
+        request.httpBody = jsonData
+        
+        // 4 requisição propriamente dita como uma CLOSURE
+        let dataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
+            // 5 verifica resposta do servidor e retorna SUCESSO
+            if error == nil {
+                
+                // verificar e desembrulhar em uma unica vez
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200, let _ = data else {
+                    onComplete(false)
+                    return
+                }
+                
+                // sucesso
+                onComplete(true)
+                
+            } else {
+                onComplete(false)
+            }
+        }
+        dataTask.resume()
+    }
+    
+}
