@@ -225,8 +225,8 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="K5D-T2-mIL">
-                                <rect key="frame" x="208" y="578" width="20" height="20"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="K5D-T2-mIL">
+                                <rect key="frame" x="200" y="570" width="37" height="37"/>
                                 <color key="color" name="main"/>
                             </activityIndicatorView>
                         </subviews>
@@ -245,7 +245,7 @@
                             <constraint firstItem="K5D-T2-mIL" firstAttribute="centerY" secondItem="Ee4-gO-c0R" secondAttribute="centerY" id="h6i-xT-OiN"/>
                             <constraint firstItem="n0h-oW-Exb" firstAttribute="top" secondItem="h0W-xz-8b0" secondAttribute="bottom" constant="4" id="m9D-Zw-cKa"/>
                             <constraint firstItem="h0W-xz-8b0" firstAttribute="top" secondItem="Hc8-xg-B67" secondAttribute="top" constant="20" id="usU-Xg-Eur"/>
-                            <constraint firstItem="K5D-T2-mIL" firstAttribute="trailing" secondItem="Ee4-gO-c0R" secondAttribute="trailing" id="v2y-th-Wv8"/>
+                            <constraint firstItem="K5D-T2-mIL" firstAttribute="trailing" secondItem="Ee4-gO-c0R" secondAttribute="trailing" constant="-200" id="v2y-th-Wv8"/>
                             <constraint firstItem="Ee4-gO-c0R" firstAttribute="top" secondItem="M2w-Q0-H2V" secondAttribute="bottom" constant="20" id="wC4-IF-Ywr"/>
                             <constraint firstItem="n0h-oW-Exb" firstAttribute="leading" secondItem="Hc8-xg-B67" secondAttribute="leading" constant="24" id="xSR-kp-gCZ"/>
                         </constraints>
