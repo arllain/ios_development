@@ -7,5 +7,6 @@ target 'Carangas' do
 
   # Pods for Carangas
   pod 'SideMenu'
+  pod 'Alamofire'
 
 end
