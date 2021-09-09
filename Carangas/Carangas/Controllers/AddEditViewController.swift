@@ -64,10 +64,10 @@ class AddEditViewController: UIViewController {
     }
     
     func loadBrands() {
-        
+
         startLoadingAnimation()
-        
-        REST.loadBrands { (brands) in
+
+        AlamofireREST.loadBrands { (brands) in
             guard let brands = brands else {return}
             
             // ascending order
@@ -109,15 +109,15 @@ class AddEditViewController: UIViewController {
         if hasRetry {
             let tryAgainAction = UIAlertAction(title: "Tentar novamente", style: .default, handler: {(action: UIAlertAction) in
                 
-                switch oper {
-                case .add_car:
-                    self.adicionar()
-                case .edit_car:
-                    self.editar()
-                case .get_brands:
-                    self.loadBrands()
-                }
-                
+//                switch oper {
+//                case .add_car:
+//                    self.adicionar()
+//                case .edit_car:
+//                    self.editar()
+//                case .get_brands:
+//                    self.loadBrands()
+//                }
+//
             })
             alert.addAction(tryAgainAction)
             
@@ -146,8 +146,8 @@ class AddEditViewController: UIViewController {
         
         startLoadingAnimation()
         
-        // new car
-        REST.save(car: car) { (success) in
+       // new car
+        AlamofireREST.save(car: car) { (success) in
             if success {
                 self.goBack()
             }else {
@@ -163,7 +163,7 @@ class AddEditViewController: UIViewController {
         
         startLoadingAnimation()
         // 2 - edit current car
-        REST.update(car: car) { (success) in
+        AlamofireREST.update(car: car) { (success) in
             if success {
                 self.goBack()
             }else {

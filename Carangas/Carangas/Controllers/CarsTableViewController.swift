@@ -53,7 +53,7 @@ class CarsTableViewController: UITableViewController {
     
     // usamos o @objc para o #selector ser reconhecido
     @objc func loadCars() {
-        REST.loadCars { cars in
+        AlamofireREST.loadCars { cars in
             self.cars = cars
             
             // precisa recarregar a tableview usando a main UI thread
@@ -61,25 +61,24 @@ class CarsTableViewController: UITableViewController {
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
             }
-            
         } onError: { error in
+            print(error)
             var response: String = ""
-            
             switch error {
-            case .invalidJSON:
-                response = "invalidJSON"
-            case .noData:
-                response = "noData"
-            case .noResponse:
-                response = "noResponse"
-            case .url:
-                response = "JSON inválido"
-            case .taskError(let error):
-                response = "\(error.localizedDescription)"
-            case .responseStatusCode(let code):
-                if code != 200 {
-                    response = "Algum problema com o servidor. :( \nError:\(code)"
-                }
+                case .invalidJSON:
+                    response = "invalidJSON"
+                case .noData:
+                    response = "noData"
+                case .noResponse:
+                    response = "noResponse"
+                case .url:
+                    response = "JSON inválido"
+                case .errorDescription(let error):
+                    response = "\(error.localizedDescription)"
+                case .responseStatusCode(let code):
+                    if code != 200 {
+                        response = "Algum problema com o servidor. :( \nError:\(code)"
+                    }
             }
             
             print(response)
@@ -137,15 +136,14 @@ class CarsTableViewController: UITableViewController {
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == .delete {
             let car = cars[indexPath.row]
-            REST.delete(car: car) { (success) in
+            AlamofireREST.delete(car: car) { (success) in
                 if success {
-                    
+
                     // ATENCAO nao esquecer disso
                     self.cars.remove(at: indexPath.row)
-                    
+
                     DispatchQueue.main.async {
                         // Delete the row from the data source
                         tableView.deleteRows(at: [indexPath], with: .fade)
@@ -153,7 +151,7 @@ class CarsTableViewController: UITableViewController {
                 }else {
                     print("Nao foi possivel deletar do servidor esse carro.")
                 }
-            
+
             }
         }
     }

@@ -7,14 +7,16 @@
 //
 
 import Foundation
+import Alamofire
+
 
 enum CarError {
     case url
-    case taskError(error: Error)
     case noResponse
     case noData
     case responseStatusCode(code: Int)
     case invalidJSON
+    case errorDescription(error: Error)
 }
 
 enum RESTOperation {
@@ -23,7 +25,7 @@ enum RESTOperation {
     case delete
 }
 
-class REST {
+class AlamofireREST {
     
     private static let basePath = "https://carangas.herokuapp.com/cars"
     private static let urlFipe = "https://parallelum.com.br/fipe/api/v1/carros/marcas"
@@ -48,47 +50,28 @@ class REST {
             return
         }
         
-        // tarefa criada, mas nao processada
-        let dataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
-            
-            // 1
-            if error == nil {
-                // 2
-                guard let response = response as? HTTPURLResponse else {
-                    onError(.noResponse)
-                    return
-                }
-                
-                if response.statusCode == 200 {
-                    
-                    // servidor respondeu com sucesso :)
-                    // 3
-                    // obter o valor de data
-                    guard let data = data else {
-                        onError(.noData)
-                        return
-                    }
-                    
+        
+        AF.request(url, method: .get).responseJSON { response in
+            switch response.result {
+            case .success:
+                if(response.response?.statusCode == 200){
+                    guard let data = response.data else {return}
                     do {
                         let cars = try JSONDecoder().decode([Car].self, from: data)
                         onComplete(cars)
-                    } catch {
-                        // algum erro ocorreu com os dados
+                    }catch {
                         onError(.invalidJSON)
                     }
-                    
-                } else {
-                    onError(.responseStatusCode(code: response.statusCode))
+                }else {
+                    let statusCode = response.response?.statusCode
+                    onError(.responseStatusCode(code: statusCode!))
                 }
-            } else {
-                onError(.taskError(error: error!))
+            case let .failure(error):
+                print(error)
+                onError(.errorDescription(error: error))
             }
         }
-        // start request
-        dataTask.resume()
-        
     }
-
     
     static func save(car: Car, onComplete: @escaping (Bool) -> Void ) {
         applyOperation(car: car, operation: .save, onComplete: onComplete)
@@ -104,6 +87,7 @@ class REST {
         applyOperation(car: car, operation: .delete, onComplete: onComplete)
     }
     
+
     private static func applyOperation(car: Car, operation: RESTOperation , onComplete: @escaping (Bool) -> Void ) {
         
         // o endpoint do servidor para update é: URL/id
@@ -113,43 +97,29 @@ class REST {
             onComplete(false)
             return
         }
-        var request = URLRequest(url: url)
-        var httpMethod: String = ""
         
+        var httpMethod: HTTPMethod
         switch operation {
         case .delete:
-            httpMethod = "DELETE"
+            httpMethod = .delete
         case .save:
-            httpMethod = "POST"
+            httpMethod = .post
         case .update:
-            httpMethod = "PUT"
+            httpMethod = .put
         }
-        request.httpMethod = httpMethod
         
-        // transformar objeto para um JSON, processo contrario do decoder -> Encoder
-        guard let json = try? JSONEncoder().encode(car) else {
-            onComplete(false)
-            return
-        }
-        request.httpBody = json
-        
-        let dataTask = session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
-            if error == nil {
-                // verificar e desembrulhar em uma unica vez
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200, let _ = data else {
+        AF.request(url, method: httpMethod, parameters: car, encoder: JSONParameterEncoder.default).response { response in
+            debugPrint(response)
+            switch response.result {
+                case .success:
+                    if(response.response?.statusCode == 200){
+                         onComplete(true)
+                    }
+                case let .failure(error):
+                    print(error)
                     onComplete(false)
-                    return
-                }
-                
-                // ok
-                onComplete(true)
-                
-            } else {
-                onComplete(false)
             }
         }
-        
-        dataTask.resume()
     }
 
     // o metodo pode retornar um array de nil se tiver algum erro
@@ -159,35 +129,27 @@ class REST {
             onComplete(nil)
             return
         }
-        // tarefa criada, mas nao processada
-        let dataTask = session.dataTask(with: url) { (data: Data?, response: URLResponse?, error: Error?) in
-            if error == nil {
-                guard let response = response as? HTTPURLResponse else {
-                    onComplete(nil)
-                    return
-                }
-                if response.statusCode == 200 {
-                    // obter o valor de data
-                    guard let data = data else {
-                        onComplete(nil)
-                        return
-                    }
+        
+        
+        AF.request(url, method: .get).responseJSON { response in
+            switch response.result {
+            case .success:
+                if(response.response?.statusCode == 200){
+                    guard let data = response.data else {return}
                     do {
                         let brands = try JSONDecoder().decode([Brand].self, from: data)
                         onComplete(brands)
-                    } catch {
-                        // algum erro ocorreu com os dados
+                    }catch {
                         onComplete(nil)
                     }
-                } else {
+                }else {
                     onComplete(nil)
                 }
-            } else {
+            case let .failure(error):
+                print(error)
                 onComplete(nil)
             }
         }
-        // start request
-        dataTask.resume()
     }
     
 }
