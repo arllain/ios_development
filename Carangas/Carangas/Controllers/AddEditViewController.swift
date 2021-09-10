@@ -78,9 +78,33 @@ class AddEditViewController: UIViewController {
                 self.pickerView.reloadAllComponents()
             }
             
+        } onError: { error in
+            print(error)
+            var response: String = ""
+            switch error {
+            case .invalidJSON:
+                response = "invalidJSON"
+            case .noData:
+                response = "noData"
+            case .noResponse:
+                response = "noResponse"
+            case .url:
+                response = "JSON inválido"
+            case .errorDescription(let error):
+                response = "\(error.localizedDescription)"
+            case .responseStatusCode(let code):
+                if code != 200 {
+                    response = "Algum problema com o servidor. :( \nError:\(code)"
+                }
+            }
+            print(response)
+//            DispatchQueue.main.async {
+//                self.label.text = "Ocorreu um erro no servidor\n\n\(response)"
+//                self.tableView.backgroundView = self.label
+//            }
         }
     }
-
+    
     func startLoadingAnimation() {
         self.btAddEdit.isEnabled = false
         self.btAddEdit.backgroundColor = .gray
@@ -109,15 +133,14 @@ class AddEditViewController: UIViewController {
         if hasRetry {
             let tryAgainAction = UIAlertAction(title: "Tentar novamente", style: .default, handler: {(action: UIAlertAction) in
                 
-//                switch oper {
-//                case .add_car:
-//                    self.adicionar()
-//                case .edit_car:
-//                    self.editar()
-//                case .get_brands:
-//                    self.loadBrands()
-//                }
-//
+                switch oper {
+                case .add_car:
+                    self.adicionar()
+                case .edit_car:
+                    self.editar()
+                case .get_brands:
+                    self.loadBrands()
+                }
             })
             alert.addAction(tryAgainAction)
             
@@ -156,6 +179,27 @@ class AddEditViewController: UIViewController {
                 }
 
             }
+        }onError: { error in
+            print(error)
+            var response: String = ""
+            switch error {
+            case .invalidJSON:
+                response = "invalidJSON"
+            case .noData:
+                response = "noData"
+            case .noResponse:
+                response = "noResponse"
+            case .url:
+                response = "JSON inválido"
+            case .errorDescription(let error):
+                response = "\(error.localizedDescription)"
+            case .responseStatusCode(let code):
+                if code != 200 {
+                    response = "Algum problema com o servidor. :( \nError:\(code)"
+                }
+            }
+            
+            print(response)
         }
     }
     
@@ -171,6 +215,27 @@ class AddEditViewController: UIViewController {
                     self.showAlert(withTitle: "Editar", withMessage: "Nao foi possivel editar o carro", isTryAgain: true, operation: .edit_car)
                 }
             }
+        }onError: { error in
+            print(error)
+            var response: String = ""
+            switch error {
+            case .invalidJSON:
+                response = "invalidJSON"
+            case .noData:
+                response = "noData"
+            case .noResponse:
+                response = "noResponse"
+            case .url:
+                response = "JSON inválido"
+            case .errorDescription(let error):
+                response = "\(error.localizedDescription)"
+            case .responseStatusCode(let code):
+                if code != 200 {
+                    response = "Algum problema com o servidor. :( \nError:\(code)"
+                }
+            }
+            
+            print(response)
         }
     }
     

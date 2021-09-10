@@ -152,6 +152,27 @@ class CarsTableViewController: UITableViewController {
                     print("Nao foi possivel deletar do servidor esse carro.")
                 }
 
+            }onError: { error in
+                print(error)
+                var response: String = ""
+                switch error {
+                case .invalidJSON:
+                    response = "invalidJSON"
+                case .noData:
+                    response = "noData"
+                case .noResponse:
+                    response = "noResponse"
+                case .url:
+                    response = "JSON inválido"
+                case .errorDescription(let error):
+                    response = "\(error.localizedDescription)"
+                case .responseStatusCode(let code):
+                    if code != 200 {
+                        response = "Algum problema com o servidor. :( \nError:\(code)"
+                    }
+                }
+                
+                print(response)
             }
         }
     }

@@ -73,22 +73,22 @@ class AlamofireREST {
         }
     }
     
-    static func save(car: Car, onComplete: @escaping (Bool) -> Void ) {
-        applyOperation(car: car, operation: .save, onComplete: onComplete)
+    static func save(car: Car, onComplete: @escaping (Bool) -> Void, onError: @escaping(CarError) -> Void ) {
+        applyOperation(car: car, operation: .save, onComplete: onComplete, onError: onError)
     }
     
     
-    static func update(car: Car, onComplete: @escaping (Bool) -> Void ) {
+    static func update(car: Car, onComplete: @escaping (Bool) -> Void, onError: @escaping(CarError) -> Void) {
         // chamando o update passando operation
-        applyOperation(car: car, operation: .update, onComplete: onComplete)
+        applyOperation(car: car, operation: .update, onComplete: onComplete, onError: onError)
     }
     
-    class func delete(car: Car, onComplete: @escaping (Bool) -> Void ) {
-        applyOperation(car: car, operation: .delete, onComplete: onComplete)
+    class func delete(car: Car, onComplete: @escaping (Bool) -> Void, onError: @escaping(CarError) -> Void) {
+        applyOperation(car: car, operation: .delete, onComplete: onComplete, onError: onError)
     }
     
 
-    private static func applyOperation(car: Car, operation: RESTOperation , onComplete: @escaping (Bool) -> Void ) {
+    private static func applyOperation(car: Car, operation: RESTOperation , onComplete: @escaping (Bool) -> Void, onError: @escaping (CarError) -> Void) {
         
         // o endpoint do servidor para update é: URL/id
         let urlString = basePath + "/" + (car._id ?? "")
@@ -117,16 +117,16 @@ class AlamofireREST {
                     }
                 case let .failure(error):
                     print(error)
-                    onComplete(false)
+                    onError(.errorDescription(error: error))
             }
         }
     }
 
     // o metodo pode retornar um array de nil se tiver algum erro
-    static func loadBrands(onComplete: @escaping ([Brand]?) -> Void) {
+    static func loadBrands(onComplete: @escaping ([Brand]?) -> Void, onError: @escaping (CarError) -> Void) {
         
         guard let url = URL(string: urlFipe) else {
-            onComplete(nil)
+            onError(.url)
             return
         }
         
@@ -140,14 +140,15 @@ class AlamofireREST {
                         let brands = try JSONDecoder().decode([Brand].self, from: data)
                         onComplete(brands)
                     }catch {
-                        onComplete(nil)
+                        onError(.invalidJSON)
                     }
                 }else {
-                    onComplete(nil)
+                    let statusCode = response.response?.statusCode
+                    onError(.responseStatusCode(code: statusCode!))
                 }
             case let .failure(error):
                 print(error)
-                onComplete(nil)
+                onError(.errorDescription(error: error))
             }
         }
     }
