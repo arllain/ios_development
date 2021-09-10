@@ -81,7 +81,14 @@ class CarsTableViewController: UITableViewController {
                     }
             }
             
-            print(response)
+            let alert = UIAlertController(title: response, message: "Deseja tentar novamente?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Sim", style: .default, handler: { action in
+                self.loadCars()
+            }))
+            alert.addAction(UIAlertAction(title: "Não", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
             
             DispatchQueue.main.async {
                 self.label.text = "Ocorreu um erro no servidor\n\n\(response)"
@@ -172,7 +179,14 @@ class CarsTableViewController: UITableViewController {
                     }
                 }
                 
-                print(response)
+                let alert = UIAlertController(title: "Nao foi possivel deletar o carro. \n \(response)", message: "Deseja tentar novamente?", preferredStyle: .alert)
+                
+               /* alert.addAction(UIAlertAction(title: "Sim", style: .default, handler: { action in
+                    self.loadCars()
+                }))*/
+                alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                
+                self.present(alert, animated: true)
             }
         }
     }

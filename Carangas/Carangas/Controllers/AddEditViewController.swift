@@ -97,11 +97,8 @@ class AddEditViewController: UIViewController {
                     response = "Algum problema com o servidor. :( \nError:\(code)"
                 }
             }
-            print(response)
-//            DispatchQueue.main.async {
-//                self.label.text = "Ocorreu um erro no servidor\n\n\(response)"
-//                self.tableView.backgroundView = self.label
-//            }
+            
+            self.showAlert(withTitle: "Marcas", withMessage: "Nao foi possivel carregar as marcas. \(response)", isTryAgain: true, operation: .get_brands)
         }
     }
     
@@ -199,7 +196,7 @@ class AddEditViewController: UIViewController {
                 }
             }
             
-            print(response)
+            self.showAlert(withTitle: "Adicionar", withMessage: "Nao foi possivel salvar o carro. \(response)", isTryAgain: true, operation: .add_car)
         }
     }
     
@@ -235,7 +232,7 @@ class AddEditViewController: UIViewController {
                 }
             }
             
-            print(response)
+            self.showAlert(withTitle: "Editar", withMessage: "Nao foi possivel editar o carro. \(response)", isTryAgain: true, operation: .edit_car)
         }
     }
     
