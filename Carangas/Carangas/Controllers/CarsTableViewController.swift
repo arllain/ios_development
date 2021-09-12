@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class CarsTableViewController: UITableViewController {
     
@@ -21,6 +22,16 @@ class CarsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+  
+        // Define the menus
+        SideMenuManager.default.leftMenuNavigationController = storyboard!.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? SideMenuNavigationController
+        
+        
+        // Enable gestures. The left and/or right menus must be set up above for these to work.
+        // Note that these continue to work on the Navigation Controller independent of the View Controller it displays!
+        SideMenuManager.default.addPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        // Updated
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: self.navigationController!.view, forMenu: SideMenuManager.PresentDirection.left)
         
         label.text = "Carregando carros ..."
         
@@ -42,7 +53,7 @@ class CarsTableViewController: UITableViewController {
     
     // usamos o @objc para o #selector ser reconhecido
     @objc func loadCars() {
-        REST.loadCars { cars in
+        AlamofireREST.loadCars { cars in
             self.cars = cars
             
             // precisa recarregar a tableview usando a main UI thread
@@ -50,28 +61,34 @@ class CarsTableViewController: UITableViewController {
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
             }
-            
         } onError: { error in
+            print(error)
             var response: String = ""
-            
             switch error {
-            case .invalidJSON:
-                response = "invalidJSON"
-            case .noData:
-                response = "noData"
-            case .noResponse:
-                response = "noResponse"
-            case .url:
-                response = "JSON inválido"
-            case .taskError(let error):
-                response = "\(error.localizedDescription)"
-            case .responseStatusCode(let code):
-                if code != 200 {
-                    response = "Algum problema com o servidor. :( \nError:\(code)"
-                }
+                case .invalidJSON:
+                    response = "invalidJSON"
+                case .noData:
+                    response = "noData"
+                case .noResponse:
+                    response = "noResponse"
+                case .url:
+                    response = "JSON inválido"
+                case .errorDescription(let error):
+                    response = "\(error.localizedDescription)"
+                case .responseStatusCode(let code):
+                    if code != 200 {
+                        response = "Algum problema com o servidor. :( \nError:\(code)"
+                    }
             }
             
-            print(response)
+            let alert = UIAlertController(title: response, message: "Deseja tentar novamente?", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Sim", style: .default, handler: { action in
+                self.loadCars()
+            }))
+            alert.addAction(UIAlertAction(title: "Não", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
             
             DispatchQueue.main.async {
                 self.label.text = "Ocorreu um erro no servidor\n\n\(response)"
@@ -126,15 +143,14 @@ class CarsTableViewController: UITableViewController {
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == .delete {
             let car = cars[indexPath.row]
-            REST.delete(car: car) { (success) in
+            AlamofireREST.delete(car: car) { (success) in
                 if success {
-                    
+
                     // ATENCAO nao esquecer disso
                     self.cars.remove(at: indexPath.row)
-                    
+
                     DispatchQueue.main.async {
                         // Delete the row from the data source
                         tableView.deleteRows(at: [indexPath], with: .fade)
@@ -142,7 +158,35 @@ class CarsTableViewController: UITableViewController {
                 }else {
                     print("Nao foi possivel deletar do servidor esse carro.")
                 }
-            
+
+            }onError: { error in
+                print(error)
+                var response: String = ""
+                switch error {
+                case .invalidJSON:
+                    response = "invalidJSON"
+                case .noData:
+                    response = "noData"
+                case .noResponse:
+                    response = "noResponse"
+                case .url:
+                    response = "JSON inválido"
+                case .errorDescription(let error):
+                    response = "\(error.localizedDescription)"
+                case .responseStatusCode(let code):
+                    if code != 200 {
+                        response = "Algum problema com o servidor. :( \nError:\(code)"
+                    }
+                }
+                
+                let alert = UIAlertController(title: "Nao foi possivel deletar o carro. \n \(response)", message: "Deseja tentar novamente?", preferredStyle: .alert)
+                
+               /* alert.addAction(UIAlertAction(title: "Sim", style: .default, handler: { action in
+                    self.loadCars()
+                }))*/
+                alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                
+                self.present(alert, animated: true)
             }
         }
     }

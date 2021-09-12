@@ -64,10 +64,10 @@ class AddEditViewController: UIViewController {
     }
     
     func loadBrands() {
-        
+
         startLoadingAnimation()
-        
-        REST.loadBrands { (brands) in
+
+        AlamofireREST.loadBrands { (brands) in
             guard let brands = brands else {return}
             
             // ascending order
@@ -78,9 +78,30 @@ class AddEditViewController: UIViewController {
                 self.pickerView.reloadAllComponents()
             }
             
+        } onError: { error in
+            print(error)
+            var response: String = ""
+            switch error {
+            case .invalidJSON:
+                response = "invalidJSON"
+            case .noData:
+                response = "noData"
+            case .noResponse:
+                response = "noResponse"
+            case .url:
+                response = "JSON inválido"
+            case .errorDescription(let error):
+                response = "\(error.localizedDescription)"
+            case .responseStatusCode(let code):
+                if code != 200 {
+                    response = "Algum problema com o servidor. :( \nError:\(code)"
+                }
+            }
+            
+            self.showAlert(withTitle: "Marcas", withMessage: "Nao foi possivel carregar as marcas. \(response)", isTryAgain: true, operation: .get_brands)
         }
     }
-
+    
     func startLoadingAnimation() {
         self.btAddEdit.isEnabled = false
         self.btAddEdit.backgroundColor = .gray
@@ -117,7 +138,6 @@ class AddEditViewController: UIViewController {
                 case .get_brands:
                     self.loadBrands()
                 }
-                
             })
             alert.addAction(tryAgainAction)
             
@@ -146,8 +166,8 @@ class AddEditViewController: UIViewController {
         
         startLoadingAnimation()
         
-        // new car
-        REST.save(car: car) { (success) in
+       // new car
+        AlamofireREST.save(car: car) { (success) in
             if success {
                 self.goBack()
             }else {
@@ -156,6 +176,27 @@ class AddEditViewController: UIViewController {
                 }
 
             }
+        }onError: { error in
+            print(error)
+            var response: String = ""
+            switch error {
+            case .invalidJSON:
+                response = "invalidJSON"
+            case .noData:
+                response = "noData"
+            case .noResponse:
+                response = "noResponse"
+            case .url:
+                response = "JSON inválido"
+            case .errorDescription(let error):
+                response = "\(error.localizedDescription)"
+            case .responseStatusCode(let code):
+                if code != 200 {
+                    response = "Algum problema com o servidor. :( \nError:\(code)"
+                }
+            }
+            
+            self.showAlert(withTitle: "Adicionar", withMessage: "Nao foi possivel salvar o carro. \(response)", isTryAgain: true, operation: .add_car)
         }
     }
     
@@ -163,7 +204,7 @@ class AddEditViewController: UIViewController {
         
         startLoadingAnimation()
         // 2 - edit current car
-        REST.update(car: car) { (success) in
+        AlamofireREST.update(car: car) { (success) in
             if success {
                 self.goBack()
             }else {
@@ -171,6 +212,27 @@ class AddEditViewController: UIViewController {
                     self.showAlert(withTitle: "Editar", withMessage: "Nao foi possivel editar o carro", isTryAgain: true, operation: .edit_car)
                 }
             }
+        }onError: { error in
+            print(error)
+            var response: String = ""
+            switch error {
+            case .invalidJSON:
+                response = "invalidJSON"
+            case .noData:
+                response = "noData"
+            case .noResponse:
+                response = "noResponse"
+            case .url:
+                response = "JSON inválido"
+            case .errorDescription(let error):
+                response = "\(error.localizedDescription)"
+            case .responseStatusCode(let code):
+                if code != 200 {
+                    response = "Algum problema com o servidor. :( \nError:\(code)"
+                }
+            }
+            
+            self.showAlert(withTitle: "Editar", withMessage: "Nao foi possivel editar o carro. \(response)", isTryAgain: true, operation: .edit_car)
         }
     }
     
